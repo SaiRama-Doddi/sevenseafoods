@@ -1,161 +1,176 @@
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  Calendar,
-  Facebook,
-  Instagram,
-  MessageCircle,
-} from "lucide-react"
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 
-
-const Contact = () => {
+export default function Contact() {
   return (
+    <section className="relative py-28  overflow-hidden page-enter">
+      <div className="max-w-7xl mx-auto px-4 relative">
 
-<section id="contact" className="py-20 bg-muted/30">
-  <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        {/* BLUE BACK PANEL */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="bg-[#0c2d48] rounded-2xl px-10 py-16 lg:px-16 relative"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-    {/* Header */}
-    <div className="text-center max-w-3xl mx-auto mb-14">
-      <h2 className="font-serif text-4xl font-bold text-foreground mb-4">
-        Questions? We’re Here to Help
-      </h2>
-      <p className="text-lg text-muted-foreground">
-        Get in touch with Seven Seafoods for fresh seafood supplies,
-        bulk orders, or business enquiries.
-      </p>
-    </div>
-
-    {/* Content */}
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-      {/* LEFT – CTA */}
-      <div className="space-y-6 text-center lg:text-left">
-        <h3 className="text-2xl font-semibold text-foreground">
-          Let’s Talk
-        </h3>
-
-        <p className="text-muted-foreground max-w-md mx-auto lg:mx-0">
-          Our team is available during business hours and happy to assist
-          you with pricing, delivery schedules, and product details.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-         <a
-  href="https://wa.me/918499919197"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="
-    inline-flex items-center gap-2
-    bg-linear-to-r from-[#25D366] to-[#1DA851]
-    text-white text-sm font-medium
-    px-5 py-2.5
-    rounded-full
-    shadow-md
-    hover:shadow-lg hover:scale-[1.03]
-    transition-all duration-200
-    active:scale-95
-  "
->
-  <span className="flex items-center justify-center h-7 w-7 rounded-full">
-    <MessageCircle className="h-4 w-4" />
-  </span>
-  WhatsApp Us
-</a>
-
-        <a
-  href="mailto:sevenseafoods7@gmail.com"
-  className="
-    inline-flex items-center gap-2
-    bg-linear-to-r from-[#0c4268] to-[#146aa0]
-    text-white text-sm font-medium
-    px-5 py-2.5
-    rounded-full
-    shadow-md
-    hover:shadow-lg hover:scale-[1.03]
-    transition-all duration-200
-    active:scale-95
-  "
->
-  <span className="flex items-center justify-center h-7 w-7 rounded-full ">
-    <Mail className="h-4 w-4" />
-  </span>
-  Send Email
-</a>
-        </div>
-      </div>
-
-      {/* RIGHT – INFO CARDS */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-        {/* Contact Info */}
-        <div className="bg-blue-50 rounded-xl p-6 shadow-sm ">
-          <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-
-          <div className="space-y-4 text-sm text-muted-foreground">
-            <div className="flex items-start gap-3">
-              <Phone className="h-5 w-5 text-primary mt-0.5" />
-              <span>84999 19197</span>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <Mail className="h-5 w-5 text-primary mt-0.5" />
-              <span>sevenseafoods7@gmail.com</span>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <MapPin className="h-5 w-5 text-primary mt-0.5" />
-              <span>
-                07 Fishing Harbour,<br />
-                Visakhapatnam – 530001
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Business & Social */}
-        <div className="bg-blue-50 rounded-xl p-6 shadow-sm">
-          <h4 className="text-lg font-semibold mb-4">Business & Social</h4>
-
-          <div className="space-y-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-3">
-              <Clock className="h-5 w-5 text-primary" />
-              <span>6:00 AM – 5:00 PM</span>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Calendar className="h-5 w-5 text-primary" />
-              <span>Monday – Friday</span>
-            </div>
-
-            <div className="flex items-center gap-4 pt-2">
-              <a
-                href="https://www.facebook.com/share/16dRaSx1TX/"
-                target="_blank"
-                className="p-2 rounded-full bg-muted hover:bg-blue-600 hover:text-white transition"
+            {/* QUICK CONTACT */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.15 },
+                },
+              }}
+              className="text-white"
+            >
+              <motion.span
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="text-yellow-400 text-sm font-semibold tracking-wide uppercase"
               >
-                <Facebook className="h-5 w-5" />
-              </a>
+                Quick Contact
+              </motion.span>
 
-              <a
-                href="https://www.instagram.com/7seafoods?igsh=NHVqMnM4anBxZnh2"
-                target="_blank"
-                className="p-2 rounded-full bg-muted hover:bg-pink-600 hover:text-white transition"
+              <motion.h3
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="text-3xl font-semibold mt-3 mb-6 leading-snug"
               >
-                <Instagram className="h-5 w-5" />
-              </a>
-            </div>
-          </div>
-        </div>
+                We’d Love to Hear From You
+              </motion.h3>
 
+              <motion.p
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="text-gray-300 max-w-md mb-10"
+              >
+                Reach out to Seven Seafoods for premium seafood supplies,
+                bulk orders, and export-related enquiries.
+              </motion.p>
+
+              <div className="space-y-6 text-sm">
+                <InfoItem icon={<Phone />} label="Phone">
+                  +91 84999 19197
+                </InfoItem>
+
+                <InfoItem icon={<Mail />} label="Email">
+                  sevenseafoods7@gmail.com
+                </InfoItem>
+
+                <InfoItem icon={<MapPin />} label="Location">
+                  Fishing Harbour, Visakhapatnam – 530001
+                </InfoItem>
+
+                <InfoItem icon={<Clock />} label="Working Hours">
+                  Mon – Sat : 6:00 AM – 5:00 PM
+                </InfoItem>
+              </div>
+            </motion.div>
+
+            <div className="hidden lg:block" />
+          </div>
+        </motion.div>
+
+        {/* REQUEST A QUOTE – FLOATING */}
+        <motion.div
+          initial={{ opacity: 0, y: -40, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
+          className="
+            relative lg:absolute
+            lg:right-16
+            lg:top-[-60px]
+            bg-yellow-500
+            rounded-2xl
+            shadow-2xl
+            p-12
+            w-full
+            max-w-md
+            mx-auto
+            mt-16
+            lg:mt-0
+            z-20
+            min-h-[660px]
+            flex flex-col
+            justify-center
+          "
+        >
+          <h3 className="text-2xl font-semibold text-[#0c2d48] mb-8">
+            Request a Quote
+          </h3>
+
+          <form className="space-y-5">
+            <Input placeholder="Full Name" />
+            <Input type="email" placeholder="Email Address" />
+            <Input type="tel" placeholder="Phone Number" />
+
+            <select className="w-full bg-white px-4 py-3 rounded-md text-sm text-gray-700 outline-none">
+              <option>Select Service</option>
+              <option>Fresh Seafood Supply</option>
+              <option>Bulk Orders</option>
+              <option>Export Enquiry</option>
+            </select>
+
+            <textarea
+              rows={4}
+              placeholder="Your Message"
+              className="w-full bg-white px-4 py-3 rounded-md text-sm text-gray-900 placeholder-gray-400 outline-none resize-none"
+            />
+
+            <button
+              type="submit"
+              className="mt-4 w-full bg-[#0c2d48] text-white py-3 rounded-md text-sm font-semibold tracking-wide hover:bg-[#09345a] transition"
+            >
+              SUBMIT NOW
+            </button>
+          </form>
+        </motion.div>
       </div>
-    </div>
-  </div>
-</section>
-  )
+    </section>
+  );
 }
 
-export default Contact
+/* ---------------- COMPONENTS ---------------- */
 
+function InfoItem({
+  icon,
+  label,
+  children,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
+      className="flex items-start gap-4"
+    >
+      <div className="text-yellow-400 mt-1">{icon}</div>
+      <div>
+        <p className="font-medium">{label}</p>
+        <p className="text-gray-300">{children}</p>
+      </div>
+    </motion.div>
+  );
+}
 
+function Input({
+  placeholder,
+  type = "text",
+}: {
+  placeholder: string;
+  type?: string;
+}) {
+  return (
+    <input
+      type={type}
+      placeholder={placeholder}
+      className="w-full bg-white px-4 py-3 rounded-md text-sm text-gray-900 placeholder-gray-400 outline-none"
+    />
+  );
+}

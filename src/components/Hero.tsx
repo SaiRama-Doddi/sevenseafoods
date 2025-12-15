@@ -19,7 +19,9 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-[90vh] overflow-hidden">
+<section className="relative w-full h-[50vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] overflow-hidden">
+
+
       {/* Background Images */}
       {images.map((img, index) => (
         <div
@@ -36,11 +38,11 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-semibold text-gray-900 max-w-5xl leading-tight">
+        <h1 className="font-serif text-3xl md:text-6xl lg:text-7xl font-semibold text-[#0c2d48] italic max-w-5xl leading-tight">
           Fresh From Ocean to Your Table
         </h1>
 
-        <p className="mt-6 text-gray-700 text-lg md:text-xl max-w-3xl">
+  <p className="mt-6 text-gray-700 text-lg md:text-xl max-w-3xl hidden sm:block">
           Premium quality seafood delivered fresh. Experience the finest
           selection of fish, shellfish, and specialty items.
         </p>

@@ -1,33 +1,58 @@
 // src/pages/ProductsPage.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { products } from "../types/product";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import type { Category } from "../types/product";
+import { useSearchParams } from "react-router-dom";
 
 type FilterType = "All" | Category;
 
 export default function ProductsPage() {
   const { addToCart } = useCart();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const categoryFromUrl = searchParams.get("category") as FilterType | null;
+
   const [activeFilter, setActiveFilter] = useState<FilterType>("All");
 
+  /* ✅ SYNC URL → FILTER (THIS WAS MISSING) */
+  useEffect(() => {
+    if (categoryFromUrl) {
+      setActiveFilter(categoryFromUrl);
+    } else {
+      setActiveFilter("All");
+    }
+  }, [categoryFromUrl]);
+
+  /* 🔹 FILTER PRODUCTS */
   const filteredProducts =
     activeFilter === "All"
       ? products
       : products.filter(p => p.category === activeFilter);
 
+  /* 🔹 HANDLE FILTER CLICK (TABS) */
+  const handleFilterClick = (filter: FilterType) => {
+    setActiveFilter(filter);
+
+    if (filter === "All") {
+      setSearchParams({});
+    } else {
+      setSearchParams({ category: filter });
+    }
+  };
+
   return (
     <section className="bg-[#F6FBFC] py-14 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        
+
         {/* Heading */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-semibold mb-4">
           Our Premium Selection
         </h1>
 
         <p className="text-gray-600 mb-8 sm:mb-10 max-w-2xl text-sm sm:text-base">
-          Explore our complete range of fresh, sustainably-sourced seafood from
-          around the world.
+          Explore our complete range of fresh, sustainably-sourced seafood.
         </p>
 
         {/* 🔹 FILTER TABS */}
@@ -35,7 +60,7 @@ export default function ProductsPage() {
           {["All", "Fresh Fish", "Shellfish", "Dry Seafood"].map(filter => (
             <button
               key={filter}
-              onClick={() => setActiveFilter(filter as FilterType)}
+              onClick={() => handleFilterClick(filter as FilterType)}
               className={`px-4 sm:px-6 py-2 rounded-full border text-xs sm:text-sm font-medium transition
                 ${
                   activeFilter === filter
@@ -53,13 +78,17 @@ export default function ProductsPage() {
           {filteredProducts.map(p => (
             <div
               key={p.id}
-              className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition"
+              className="group bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition"
             >
-              <img
-                src={p.image}
-                alt={p.name}
-                className="h-44 sm:h-48 lg:h-52 w-full object-cover"
-              />
+              <div className="overflow-hidden">
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  className="h-44 sm:h-48 lg:h-52 w-full object-cover
+                             transition-transform duration-700 ease-out
+                             group-hover:scale-110"
+                />
+              </div>
 
               <div className="p-4 sm:p-5">
                 <span className="text-[11px] sm:text-xs bg-teal-100 text-teal-700 px-3 py-1 rounded-full">
@@ -81,10 +110,9 @@ export default function ProductsPage() {
                   Net: {p.netWeight}
                 </p>
 
-                {/* Add to cart */}
                 <button
                   onClick={() => addToCart(p)}
-                  className="mt-6 sm:mt-8 w-full bg-[#005F86] text-white 
+                  className="mt-6 sm:mt-8 w-full bg-[#005F86] text-white
                              h-9 sm:h-10 text-xs sm:text-sm rounded-lg
                              flex items-center justify-center gap-2
                              hover:bg-[#004a68] transition"
@@ -97,7 +125,7 @@ export default function ProductsPage() {
           ))}
         </div>
 
-        {/* Empty state */}
+        {/* EMPTY STATE */}
         {filteredProducts.length === 0 && (
           <p className="text-center text-gray-500 mt-12 text-sm">
             No products found for this category.

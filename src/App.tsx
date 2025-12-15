@@ -8,11 +8,13 @@ import { CartProvider } from "./context/CartContext";
 import { Footer } from "./components/Footer";
 import Contact from "./components/Contact";
 import About from "./components/About";
+import ScrollToTop from "./pages/ScrollToTop";
 
 export default function App() {
   return (
         <CartProvider>
     <BrowserRouter>
+    <ScrollToTop/>
       <Header />
 
       <Routes>

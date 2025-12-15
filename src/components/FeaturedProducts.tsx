@@ -8,9 +8,9 @@ export default function FeaturedProducts() {
   const featured = products.filter(p => p.featured).slice(0, 8);
   const { addToCart } = useCart();
   return (
-    <section className="bg-[#F6FBFC] py-20">
+    <section className="bg-[#F6FBFC] py-10">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-serif font-semibold text-center mb-3">
+        <h2 className="text-3xl md:text-4xl font-serif font-semibold text-center mb-3 italic">
           Featured Products
         </h2>
         <p className="text-center text-gray-600 mb-12">
@@ -24,15 +24,22 @@ export default function FeaturedProducts() {
               key={product.id}
               className="bg-white rounded-2xl shadow-md overflow-hidden"
             >
-              <div className="relative">
-                <img
-                  src={product.image}
-                  className="h-52 w-full object-cover"
-                />
-                <span className="absolute top-3 right-3 bg-teal-500 text-white text-xs px-3 py-1 rounded-full">
-                  Featured
-                </span>
-              </div>
+              <div className="relative overflow-hidden">
+  <img
+    src={product.image}
+    alt={product.name}
+    className="
+      h-52 w-full object-cover
+      transition-transform duration-700 ease-out
+      hover:scale-110
+    "
+  />
+
+  <span className="absolute top-3 right-3 bg-teal-500 text-white text-xs px-3 py-1 rounded-full">
+    Featured
+  </span>
+</div>
+
 
               <div className="p-5">
                 <span className="inline-block mb-2 text-xs bg-teal-100 text-teal-700 px-3 py-1 rounded-full">

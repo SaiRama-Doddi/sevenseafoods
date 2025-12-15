@@ -5,11 +5,11 @@ import { NavLink } from "react-router-dom";
 
 /* Active link style */
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-  `relative font-medium transition-colors
+  `relative font-medium transition-colors duration-200
    ${
      isActive
-       ? "text-yellow-500 after:absolute after:left-0 after:-bottom-2 after:h-[2px] after:w-full after:bg-yellow-500"
-       : "text-gray-700 hover:text-yellow-500"
+       ? "text-[#fddd15] after:absolute after:left-0 after:-bottom-2 after:h-[2px] after:w-full after:bg-[#fddd15]"
+       : "text-white hover:text-[#fddd15]"
    }`;
 
 export default function Header() {
@@ -17,29 +17,21 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header
-      className="
-        sticky top-0 z-50 w-full
-        bg-background/95 backdrop-blur
-        supports-[backdrop-filter]:bg-background/60
-      "
-    >
+    <header className="sticky top-0 z-50 w-full bg-[#0B6A8B] shadow-md">
       {/* MAIN BAR */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
-        
+
         {/* LOGO */}
         <NavLink to="/" className="flex items-center">
-          <div className="h-24 sm:h-16 md:h-30">
-            <img
-              src="/logo.png"
-              alt="Logo"
-              className="h-full w-auto object-contain"
-            />
-          </div>
+          <img
+            src="/logo.png"
+            alt="Seven Seafoods"
+            className="h-24 sm:h-20 md:h-28 object-contain"
+          />
         </NavLink>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center gap-10 italic text-lg">
+        <nav className="hidden md:flex items-center gap-10 text-lg italic">
           <NavLink to="/" className={navLinkClass}>
             Home
           </NavLink>
@@ -56,69 +48,62 @@ export default function Header() {
 
         {/* RIGHT ACTIONS */}
         <div className="flex items-center gap-4">
+
           {/* CART */}
           <button
             onClick={toggleCart}
-            className="relative p-2 rounded-full hover:bg-black/5 transition"
+            className="
+              relative p-2 rounded-full
+              hover:bg-white/10
+              transition
+            "
           >
-            <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" />
+            <ShoppingCart className="w-6 h-6 text-[#fddd15]" />
+
             {cart.length > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">
+              <span
+                className="
+                  absolute -top-1 -right-1
+                  bg-[#fddd15] text-[#0c2d48]
+                  text-[10px] font-bold
+                  w-5 h-5
+                  flex items-center justify-center
+                  rounded-full
+                "
+              >
                 {cart.length}
               </span>
             )}
           </button>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* MOBILE MENU */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 rounded-full hover:bg-black/5"
+            className="md:hidden p-2 rounded-full hover:bg-white/10"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-6 h-6 text-white" />
           </button>
         </div>
       </div>
 
       {/* MOBILE NAV */}
       {menuOpen && (
-        <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur">
+        <div className="md:hidden bg-[#0c2d48] border-t border-white/10">
           <nav className="flex flex-col px-6 py-4 space-y-4">
-            <NavLink
-              to="/"
-              onClick={() => setMenuOpen(false)}
-              className={({ isActive }) =>
-                isActive ? "text-[#f6da2f] font-semibold" : "text-gray-700"
-              }
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/products"
-              onClick={() => setMenuOpen(false)}
-              className={({ isActive }) =>
-                isActive ? "text-[#f6da2f] font-semibold" : "text-gray-700"
-              }
-            >
-              Products
-            </NavLink>
-            <NavLink
-              to="/about"
-              onClick={() => setMenuOpen(false)}
-              className={({ isActive }) =>
-                isActive ? "text-[#f6da2f] font-semibold" : "text-gray-700"
-              }
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/contact"
-              onClick={() => setMenuOpen(false)}
-              className={({ isActive }) =>
-                isActive ? "text-[#f6da2f] font-semibold" : "text-gray-700"
-              }
-            >
-              Contact
-            </NavLink>
+            {["/", "/products", "/about", "/contact"].map((path, i) => (
+              <NavLink
+                key={i}
+                to={path}
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-[#f4b400] font-semibold"
+                    : "text-white hover:text-[#f4b400]"
+                }
+              >
+                {path === "/" ? "Home" : path.replace("/", "").charAt(0).toUpperCase() + path.slice(2)}
+              </NavLink>
+            ))}
           </nav>
         </div>
       )}
