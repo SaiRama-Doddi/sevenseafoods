@@ -1,17 +1,38 @@
+import { useEffect, useState } from "react";
+
+const images = [
+  "/hero.jpg",
+  "/hero2.jpg",
+  "/hero3.jpg",
+];
+
 export default function Hero() {
+  const [current, setCurrent] = useState(0);
+
+  // Auto scroll
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative w-full h-[90vh]">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('/hero.jpg')", // put ocean image in public folder
-        }}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-white/40" />
-      </div>
+    <section className="relative w-full h-[90vh] overflow-hidden">
+      {/* Background Images */}
+      {images.map((img, index) => (
+        <div
+          key={img}
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+            index === current ? "opacity-100" : "opacity-0"
+          }`}
+          style={{ backgroundImage: `url(${img})` }}
+        />
+      ))}
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-white/40" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
@@ -26,15 +47,19 @@ export default function Hero() {
 
         {/* Buttons */}
         <div className="mt-10 flex gap-4">
-          <button className="bg-[#0B6A8B] hover:bg-[#095a76] cursor-pointer text-white px-8 py-3 rounded-xl text-lg font-medium transition">
-            <a href="/products">
+          <a
+            href="/products"
+            className="bg-[#0B6A8B] hover:bg-[#095a76] text-white px-8 py-3 rounded-xl text-lg font-medium transition"
+          >
             Shop Now
-            </a>
-          </button>
+          </a>
 
-          <button className="border border-gray-400 hover:bg-gray-100 cursor-pointer text-gray-800 px-8 py-3 rounded-xl text-lg font-medium transition">
-           <a href="/about"> Learn More</a>
-          </button>
+          <a
+            href="/about"
+            className="border border-gray-400 hover:bg-gray-100 text-gray-800 px-8 py-3 rounded-xl text-lg font-medium transition"
+          >
+            Learn More
+          </a>
         </div>
       </div>
     </section>
