@@ -1,4 +1,6 @@
 // src/pages/Home.tsx
+import About from "../components/About";
+import Contact from "../components/Contact";
 import FeaturedProducts from "../components/FeaturedProducts";
 import Features from "../components/Features";
 import Hero from "../components/Hero";
@@ -11,6 +13,8 @@ export default function Home() {
     <Features/>
       <FeaturedProducts />
       <ShopByCategory />
+      <About/>
+      <Contact/>
     </>
   );
 }

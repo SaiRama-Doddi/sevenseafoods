@@ -42,19 +42,47 @@ const Contact = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-          <button>
-            <a href="https://wa.me/918499919197" target="_blank">
-              <MessageCircle className="mr-2 h-5 w-5" />
-              WhatsApp Us
-            </a>
-          </button>
+         <a
+  href="https://wa.me/918499919197"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    inline-flex items-center gap-2
+    bg-linear-to-r from-[#25D366] to-[#1DA851]
+    text-white text-sm font-medium
+    px-5 py-2.5
+    rounded-full
+    shadow-md
+    hover:shadow-lg hover:scale-[1.03]
+    transition-all duration-200
+    active:scale-95
+  "
+>
+  <span className="flex items-center justify-center h-7 w-7 rounded-full">
+    <MessageCircle className="h-4 w-4" />
+  </span>
+  WhatsApp Us
+</a>
 
-          <button  >
-            <a href="mailto:sevenseafoods7@gmail.com">
-              <Mail className="mr-2 h-5 w-5" />
-              Send Email
-            </a>
-          </button>
+        <a
+  href="mailto:sevenseafoods7@gmail.com"
+  className="
+    inline-flex items-center gap-2
+    bg-linear-to-r from-[#0c4268] to-[#146aa0]
+    text-white text-sm font-medium
+    px-5 py-2.5
+    rounded-full
+    shadow-md
+    hover:shadow-lg hover:scale-[1.03]
+    transition-all duration-200
+    active:scale-95
+  "
+>
+  <span className="flex items-center justify-center h-7 w-7 rounded-full ">
+    <Mail className="h-4 w-4" />
+  </span>
+  Send Email
+</a>
         </div>
       </div>
 
@@ -62,7 +90,7 @@ const Contact = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
         {/* Contact Info */}
-        <div className="bg-background rounded-xl p-6 shadow-sm border">
+        <div className="bg-blue-50 rounded-xl p-6 shadow-sm ">
           <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
 
           <div className="space-y-4 text-sm text-muted-foreground">
@@ -87,7 +115,7 @@ const Contact = () => {
         </div>
 
         {/* Business & Social */}
-        <div className="bg-background rounded-xl p-6 shadow-sm border">
+        <div className="bg-blue-50 rounded-xl p-6 shadow-sm">
           <h4 className="text-lg font-semibold mb-4">Business & Social</h4>
 
           <div className="space-y-4 text-sm text-muted-foreground">

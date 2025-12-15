@@ -7,7 +7,7 @@ export default function About() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/about/seafood-bg.jpg')",
+            backgroundImage: "url('https://wallpaperaccess.com/full/1491751.jpg')",
           }}
         >
           <div className="absolute inset-0 bg-black/55" />
@@ -25,7 +25,7 @@ export default function About() {
         <div className="relative z-10 flex items-center justify-center h-full px-6">
           <div className="text-center max-w-4xl">
             <h1 className="text-white font-serif text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight">
-              Local Seafood <br /> Mastery in Visakhapatnam
+              Local Seafood  Mastery in Visakhapatnam
             </h1>
 
             <p className="mt-6 text-gray-200 text-lg md:text-xl">

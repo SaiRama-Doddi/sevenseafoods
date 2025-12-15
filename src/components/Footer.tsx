@@ -4,7 +4,7 @@ import {  Facebook, Instagram, Twitter } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-muted/30 mt-20">
+    <footer className="bg-gray-50 bg-muted/30 mt-20">
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* LOGO */}

@@ -8,8 +8,8 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   `relative font-medium transition-colors
    ${
      isActive
-       ? "text-orange-500 after:absolute after:left-0 after:-bottom-2 after:h-[2px] after:w-full after:bg-orange-500"
-       : "text-gray-700 hover:text-orange-500"
+       ? "text-yellow-500 after:absolute after:left-0 after:-bottom-2 after:h-[2px] after:w-full after:bg-yellow-500"
+       : "text-gray-700 hover:text-yellow-500"
    }`;
 
 export default function Header() {
@@ -39,7 +39,7 @@ export default function Header() {
         </NavLink>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden md:flex items-center gap-10 italic text-lg">
           <NavLink to="/" className={navLinkClass}>
             Home
           </NavLink>
@@ -87,7 +87,7 @@ export default function Header() {
               to="/"
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                isActive ? "text-orange-500 font-semibold" : "text-gray-700"
+                isActive ? "text-[#f6da2f] font-semibold" : "text-gray-700"
               }
             >
               Home
@@ -96,7 +96,7 @@ export default function Header() {
               to="/products"
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                isActive ? "text-orange-500 font-semibold" : "text-gray-700"
+                isActive ? "text-[#f6da2f] font-semibold" : "text-gray-700"
               }
             >
               Products
@@ -105,7 +105,7 @@ export default function Header() {
               to="/about"
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                isActive ? "text-orange-500 font-semibold" : "text-gray-700"
+                isActive ? "text-[#f6da2f] font-semibold" : "text-gray-700"
               }
             >
               About
@@ -114,7 +114,7 @@ export default function Header() {
               to="/contact"
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                isActive ? "text-orange-500 font-semibold" : "text-gray-700"
+                isActive ? "text-[#f6da2f] font-semibold" : "text-gray-700"
               }
             >
               Contact

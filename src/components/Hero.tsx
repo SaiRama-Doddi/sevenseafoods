@@ -26,12 +26,14 @@ export default function Hero() {
 
         {/* Buttons */}
         <div className="mt-10 flex gap-4">
-          <button className="bg-[#0B6A8B] hover:bg-[#095a76] text-white px-8 py-3 rounded-xl text-lg font-medium transition">
+          <button className="bg-[#0B6A8B] hover:bg-[#095a76] cursor-pointer text-white px-8 py-3 rounded-xl text-lg font-medium transition">
+            <a href="/products">
             Shop Now
+            </a>
           </button>
 
-          <button className="border border-gray-400 hover:bg-gray-100 text-gray-800 px-8 py-3 rounded-xl text-lg font-medium transition">
-            Learn More
+          <button className="border border-gray-400 hover:bg-gray-100 cursor-pointer text-gray-800 px-8 py-3 rounded-xl text-lg font-medium transition">
+           <a href="/about"> Learn More</a>
           </button>
         </div>
       </div>
