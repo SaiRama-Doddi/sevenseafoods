@@ -1,5 +1,5 @@
 
-import { Waves, Facebook, Instagram, Twitter } from "lucide-react"
+import {  Facebook, Instagram, Twitter } from "lucide-react"
 
 
 export function Footer() {
