@@ -55,9 +55,33 @@ export default function FeaturedProducts() {
                   <span className="text-sm font-normal">/ {product.unit}</span>
                 </p>
 
-                <p className="text-sm text-gray-500 mt-1">
-                  Net: {product.netWeight}
-                </p>
+               <div className="mt-3 rounded-xl border border-gray-200 bg-white p-4 space-y-3 min-h-[110px]">
+  {/* Gross Weight */}
+  <div className={product.grossWeight ? "" : "invisible"}>
+    <p className="text-xs uppercase tracking-wide text-gray-500">
+      Gross Weight
+    </p>
+    <p className="text-sm font-semibold text-gray-900">
+      {product.grossWeight || "—"}
+    </p>
+  </div>
+
+  {/* Net Weight */}
+  <div>
+    <p className="text-xs uppercase tracking-wide text-gray-500">
+      Net Weight
+    </p>
+    <p className={`text-sm font-semibold ${
+      product.grossWeight ? "text-green-700" : "text-gray-900"
+    }`}>
+      {product.netWeight}
+      {product.grossWeight && (
+        <span className="ml-1 text-xs text-gray-500">(After Cleaning)</span>
+      )}
+    </p>
+  </div>
+</div>
+
 <button
   onClick={() => addToCart(product)}
   className="mt-10 w-full bg-[#005F86] text-white 

@@ -55,7 +55,7 @@ export default function Header() {
             className="
               relative p-2 rounded-full
               hover:bg-white/10
-              transition
+              transition cursor-pointer
             "
           >
             <ShoppingCart className="w-6 h-6 text-[#fddd15]" />

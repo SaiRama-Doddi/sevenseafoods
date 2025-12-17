@@ -9,6 +9,7 @@ export interface Product {
   price: number;
   unit: string;
   netWeight: string;
+  grossWeight?: string;
   image: string;
   featured?: boolean;
 }
@@ -22,7 +23,8 @@ export const products: Product[] = [
     price: 1999,
     unit: "kg",
     netWeight: "800 grams",
-    image: "https://i.pinimg.com/1200x/22/da/a4/22daa482a81f666f2507e854abc69730.jpg",
+    grossWeight: "1 kg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984688/lobster_fldpfh.jpg",
     featured: true,
   },
   {
@@ -32,7 +34,8 @@ export const products: Product[] = [
     price: 1000,
     unit: "kg",
     netWeight: "800 grams",
-    image: "https://freshcatch.ae/wp-content/uploads/2020/01/Live-lobster.png",
+    grossWeight: "1 kg count 4 to 5 pieces",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984688/lobster_fldpfh.jpg",
     featured: true,
   },
   {
@@ -42,6 +45,7 @@ export const products: Product[] = [
     price: 600,
     unit: "kg",
     netWeight: "500 grams",
+    grossWeight: "1 kg count 20 to 30 pieces",
     image: "https://sethlui.com/wp-content/uploads/2021/06/raw-white-prawn.jpg",
     featured: true,
   },
@@ -52,7 +56,8 @@ export const products: Product[] = [
     price: 1400,
     unit: "kg",
     netWeight: "500 grams",
-    image: "https://i.pinimg.com/736x/cf/9d/42/cf9d425249c85e3d90ab4dcfedadcc71.jpg",
+    grossWeight: "1 kg count 10 to 12 pieces",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984688/sea-tiger-prawns_utlkgr.jpg",
     featured: true,
   },
   {
@@ -62,7 +67,8 @@ export const products: Product[] = [
     price: 1250,
     unit: "kg",
     netWeight: "500 grams",
-    image: "https://freshcatch.ae/wp-content/uploads/2020/01/Tigers-prawns-u10.png",
+    grossWeight: "1 kg count 10 to 15 pieces",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984688/sea-tiger-prawns_utlkgr.jpg",
   },
   {
     id: 6,
@@ -71,6 +77,7 @@ export const products: Product[] = [
     price: 500,
     unit: "kg",
     netWeight: "500 grams",
+    grossWeight: "1 kg count 40 to 50 pieces",
     image: "https://i.pinimg.com/1200x/44/93/3d/44933d1f85d4704b529062648358ac18.jpg",
   },
   {
@@ -80,6 +87,7 @@ export const products: Product[] = [
     price: 600,
     unit: "kg",
     netWeight: "500 grams",
+    grossWeight: "1 kg count 4 to 6 pieces",
     image: "https://i.pinimg.com/1200x/c3/68/b2/c368b2c5f9e60b6a6be81002fa110b2c.jpg",
   },
   {
@@ -89,6 +97,7 @@ export const products: Product[] = [
     price: 600,
     unit: "kg",
     netWeight: "700 grams",
+    grossWeight: "1 kg count 3 to 5 pieces",
     image: "https://i.pinimg.com/736x/88/27/d0/8827d0eb5d554a7ec75b58656c1769a7.jpg",
   },
   {
@@ -98,6 +107,7 @@ export const products: Product[] = [
     price: 300,
     unit: "kg",
     netWeight: "500 grams",
+    grossWeight: "1 kg count 6 to 8 pieces",
     image: "https://i.pinimg.com/1200x/19/40/bb/1940bb1440caca03b587051bc2ec118a.jpg",
   },
   {
@@ -107,6 +117,7 @@ export const products: Product[] = [
     price: 500,
     unit: "kg",
     netWeight: "500 grams",
+    grossWeight: "1 kg",
     image: "https://i.pinimg.com/736x/c1/93/45/c193458dd8791449827331531e268771.jpg",
   },
   {
@@ -116,6 +127,7 @@ export const products: Product[] = [
     price: 600,
     unit: "kg",
     netWeight: "600–700 grams",
+    grossWeight: "1 kg",
     image: "https://i.pinimg.com/1200x/88/5d/db/885ddb763a601149e2159bdcbfef57a8.jpg",
   },
 
@@ -127,7 +139,8 @@ export const products: Product[] = [
     price: 800,
     unit: "kg",
     netWeight: "800 grams",
-    image: "https://i.pinimg.com/736x/a8/30/23/a83023f6ca21b2708733d76662065eec.jpg",
+    grossWeight: "1 kg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984687/king-fish-curry-cut_pjer5e.jpg",
     featured: true,
   },
   {
@@ -137,7 +150,8 @@ export const products: Product[] = [
     price: 900,
     unit: "kg",
     netWeight: "800 grams",
-    image: "https://5.imimg.com/data5/SELLER/Default/2023/8/335522635/QA/VR/QW/93863058/frozen-food-500x500.jpeg",
+    grossWeight: "1 kg count 10 to 15 pieces",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984687/king-fish_w4kemm.jpg",
     featured: true,
   },
   {
@@ -147,15 +161,17 @@ export const products: Product[] = [
     price: 1300,
     unit: "1.5 kg",
     netWeight: "600 grams",
-    image: "http://cdn.shopify.com/s/files/1/0378/7292/6764/products/KingFishFillets_1200x1200.png?v=1614146953",
+    grossWeight: "1.5 kg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984687/king-fish-boneless-fillet-cubes_w8hsac.jpg",
   },
   {
     id: 15,
-    name: "King Fish Heads",
+    name: "King Fish Heads - Konam",
     category: "Fresh Fish",
     price: 300,
     unit: "kg",
     netWeight: "600 grams",
+    grossWeight: "1 kg",
     image: "https://www.norsupplies.com/wp-content/uploads/2023/04/King-Fish-Heads-for-soup.png",
   },
   {
@@ -165,7 +181,8 @@ export const products: Product[] = [
     price: 1600,
     unit: "kg",
     netWeight: "800 grams",
-    image: "https://i.pinimg.com/1200x/5c/8c/9e/5c8c9ece58c108eff3349a4371b8e9f8.jpg",
+    grossWeight: "1 kg count 2 pieces",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984686/chinese-pomfret_lum3ht.jpg",
     featured: true,
   },
   {
@@ -175,6 +192,7 @@ export const products: Product[] = [
     price: 1400,
     unit: "kg",
     netWeight: "800 grams",
+    grossWeight: "1 kg count 2 to 3 pieces",
     image: "https://i.pinimg.com/1200x/fa/4a/1e/fa4a1ec804d1d653c69fc70c3934b926.jpg",
   },
   {
@@ -184,6 +202,7 @@ export const products: Product[] = [
     price: 1450,
     unit: "kg",
     netWeight: "800 grams",
+    grossWeight: "1 kg count 2-3 pieces whole cleaned",
     image: "https://m.media-amazon.com/images/I/41xOpahw9XL.jpg",
   },
   {
@@ -193,6 +212,7 @@ export const products: Product[] = [
     price: 1350,
     unit: "kg",
     netWeight: "800 grams",
+    grossWeight: "1 kg count 4 to 5 pieces whole cleaned",
     image: "http://www.bombayfisheries.com/cdn/shop/files/white-pomfret-whole-cleaned.png?v=1687610102",
   },
   {
@@ -202,6 +222,7 @@ export const products: Product[] = [
     price: 600,
     unit: "kg",
     netWeight: "800 grams",
+    grossWeight: "1 kg count 3 to 5 pieces",
     image: "https://d1z88p83zuviay.cloudfront.net/ProductVariantImages/66297c99-35c1-4b53-9d69-b226e6a3af4b.jpg",
   },
   {
@@ -211,6 +232,7 @@ export const products: Product[] = [
     price: 400,
     unit: "kg",
     netWeight: "600 grams",
+    grossWeight: "1 kg",
     image: "https://i.pinimg.com/736x/9c/3a/5f/9c3a5fea37f50ac24d0c353136661017.jpg",
   },
   {
@@ -220,6 +242,7 @@ export const products: Product[] = [
     price: 400,
     unit: "kg",
     netWeight: "600 grams",
+    grossWeight: "1 kg",
     image: "https://i.pinimg.com/736x/59/ca/bb/59cabb1ec801d1829dc9aab3c75f9155.jpg",
   },
   {
@@ -229,6 +252,7 @@ export const products: Product[] = [
     price: 400,
     unit: "kg",
     netWeight: "700 grams",
+    grossWeight: "1 kg",
     image: "https://www.healthifyme.com/blog/wp-content/uploads/2023/06/shutterstock_1829757968-1.jpg",
   },
   {
@@ -238,6 +262,7 @@ export const products: Product[] = [
     price: 400,
     unit: "kg",
     netWeight: "800 grams",
+    grossWeight: "1 kg count 6 to 8 pieces",
     image: "http://doofdoof.in/cdn/shop/products/images_12.jpg?v=1668691097",
   },
   {
@@ -247,6 +272,7 @@ export const products: Product[] = [
     price: 270,
     unit: "kg",
     netWeight: "600 grams",
+    grossWeight: "1 kg",
     image: "https://www.bayhawk.in/wp-content/uploads/2022/06/1.-Whole-Uncleaned-1280x840-13.jpg",
   },
   {
@@ -256,7 +282,8 @@ export const products: Product[] = [
     price: 270,
     unit: "kg",
     netWeight: "600 grams",
-    image: "/products/sheelavathi.jpg",
+    grossWeight: "1 kg",
+    image: "https://5.imimg.com/data5/KG/YT/TQ/ANDROID-15561967/product-jpeg-500x500.jpg",
   },
   {
     id: 27,
@@ -265,7 +292,8 @@ export const products: Product[] = [
     price: 600,
     unit: "kg",
     netWeight: "500 grams",
-    image: "/products/milk-shark.jpg",
+    grossWeight: "1 kg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984687/milkshake_hbci6s.jpg",
   },
   {
     id: 28,
@@ -274,7 +302,8 @@ export const products: Product[] = [
     price: 600,
     unit: "kg",
     netWeight: "600 grams",
-    image: "/products/lady-fingers-fish.jpg",
+    grossWeight: "1 kg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984688/lady-fish_jytpjd.jpg",
   },
 
   // 🐟 DRY SEAFOOD
@@ -285,7 +314,7 @@ export const products: Product[] = [
     price: 200,
     unit: "250 g",
     netWeight: "250 grams",
-    image: "/products/dry-savadalu.jpg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765985868/savadalu_ei5vfg.jpg",
   },
   {
     id: 30,
@@ -294,7 +323,7 @@ export const products: Product[] = [
     price: 300,
     unit: "250 g",
     netWeight: "250 grams",
-    image: "/products/dry-kingfish.jpg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984687/dry-king-fish_uzkvra.jpg",
   },
   {
     id: 31,
@@ -303,7 +332,7 @@ export const products: Product[] = [
     price: 350,
     unit: "250 g",
     netWeight: "250 grams",
-    image: "/products/dry-squid.jpg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984687/dry-squid_fhd5em.jpg",
   },
   {
     id: 32,
@@ -312,7 +341,7 @@ export const products: Product[] = [
     price: 200,
     unit: "250 g",
     netWeight: "250 grams",
-    image: "/products/dry-anchovy-medium.jpg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984686/dry-anchovy_ap2jji.jpg",
   },
   {
     id: 33,
@@ -321,7 +350,7 @@ export const products: Product[] = [
     price: 250,
     unit: "250 g",
     netWeight: "250 grams",
-    image: "/products/dry-anchovy-large.jpg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984686/dry-anchovy_ap2jji.jpg",
   },
   {
     id: 34,
@@ -330,7 +359,7 @@ export const products: Product[] = [
     price: 200,
     unit: "250 g",
     netWeight: "250 grams",
-    image: "/products/dry-royyapottu.jpg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984687/dry-royopattu_azmzyz.jpg",
   },
   {
     id: 35,
@@ -339,7 +368,17 @@ export const products: Product[] = [
     price: 250,
     unit: "250 g",
     netWeight: "250 grams",
-    image: "/products/dry-prawns.jpg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1765984686/dry-praws_jcec8c.jpg",
     featured: true,
+  },
+   {
+    id: 36,
+    name: "Seer Fish-Vanajaram",
+    category: "Fresh Fish",
+    price: 800,
+    unit: "kg",
+    netWeight: "800 grams",
+    grossWeight: "1 kg count 10 to 15 pieces", 
+    image: "https://5.imimg.com/data5/UI/JG/MY-37031394/vanjiram-fish-500x500.jpg",
   },
 ];
