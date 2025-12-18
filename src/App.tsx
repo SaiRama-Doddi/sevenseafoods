@@ -10,11 +10,13 @@ import Contact from "./components/Contact";
 import About from "./components/About";
 import ScrollToTop from "./pages/ScrollToTop";
 import FloatingButtons from "./components/FloatingButtons";
+import GlobalFishBackground from "./components/GlobalFishBackground";
 
 export default function App() {
   return (
         <CartProvider>
     <BrowserRouter>
+    <GlobalFishBackground/>
     <ScrollToTop/>
       <Header />
 
@@ -35,7 +37,7 @@ export default function App() {
 
               <CartDrawer />
               <Footer/>
-              <FloatingButtons/>
+            <FloatingButtons/>
     </BrowserRouter>
     </CartProvider>
   );

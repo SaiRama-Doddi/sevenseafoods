@@ -1,11 +1,10 @@
-const fishes = Array.from({ length: 22 });
+const fishes = Array.from({ length: 26 });
 const icons = ["🐟", "🐠", "🐡", "🦐"];
-
 const depths = ["far", "mid", "near"] as const;
 
-export default function FishIconBackground() {
+export default function GlobalFishBackground() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
       {fishes.map((_, i) => {
         const depth = depths[Math.floor(Math.random() * depths.length)];
         const direction = i % 2 === 0 ? "swim-down" : "swim-up";
@@ -16,14 +15,14 @@ export default function FishIconBackground() {
             className={`fish ${direction} ${depth}`}
             style={{
               left: `${Math.random() * 100}%`,
-              animationDuration: `${28 + Math.random() * 20}s`,
+              animationDuration: `${30 + Math.random() * 25}s`,
               animationDelay: `${Math.random() * 20}s`,
               fontSize:
                 depth === "far"
                   ? `${Math.random() * 6 + 14}px`
                   : depth === "mid"
-                  ? `${Math.random() * 8 + 20}px`
-                  : `${Math.random() * 10 + 28}px`,
+                  ? `${Math.random() * 10 + 20}px`
+                  : `${Math.random() * 12 + 28}px`,
             }}
           >
             {icons[Math.floor(Math.random() * icons.length)]}

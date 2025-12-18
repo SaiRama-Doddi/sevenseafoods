@@ -4,6 +4,8 @@ import { ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useSearchParams } from "react-router-dom";
 import { Filter, Check } from "lucide-react";
+import FishIconBackground from "../components/FishBackground";
+
 
 /* 🔹 FILTER TYPES */
 type FilterType = "All" | "Fish" | "Prawns" | "Crabs" | "Dry Fish";
@@ -83,8 +85,9 @@ export default function ProductsPage() {
   });
 
   return (
-    <section className="bg-[#F6FBFC] py-14 sm:py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section className=" py-14 sm:py-20 relative">
+     <FishIconBackground/>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 overflow-hidden">
 
         {/* 🔹 HEADING */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-semibold mb-4">

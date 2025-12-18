@@ -3,15 +3,25 @@ import { products } from "../types/product";
 import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import FishBackground from "./FishBackground";
 
 export default function FeaturedProducts() {
   const featured = products.filter(p => p.featured).slice(0, 8);
   const { addToCart } = useCart();
   return (
-    <section className="bg-[#F6FBFC] py-10">
+ <section className="
+  bg-[#F6FBFC]
+  py-10
+  relative
+  overflow-hidden
+  min-h-[120vh]
+  sm:min-h-screen
+">
+
+      <FishBackground/>
 
 
-      <div className="max-w-7xl mx-auto px-6">
+   <div className="relative z-10 max-w-7xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-serif font-semibold text-center mb-3 italic">
           Featured Products
         </h2>
