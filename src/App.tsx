@@ -9,6 +9,7 @@ import { Footer } from "./components/Footer";
 import Contact from "./components/Contact";
 import About from "./components/About";
 import ScrollToTop from "./pages/ScrollToTop";
+import FloatingButtons from "./components/FloatingButtons";
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
 
               <CartDrawer />
               <Footer/>
+              <FloatingButtons/>
     </BrowserRouter>
     </CartProvider>
   );

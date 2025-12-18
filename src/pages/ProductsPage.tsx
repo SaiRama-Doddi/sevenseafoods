@@ -3,6 +3,7 @@ import { products } from "../types/product";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useSearchParams } from "react-router-dom";
+import { Filter, Check } from "lucide-react";
 
 /* 🔹 FILTER TYPES */
 type FilterType = "All" | "Fish" | "Prawns" | "Crabs" | "Dry Fish";
@@ -14,13 +15,32 @@ export default function ProductsPage() {
   const filterFromUrl = searchParams.get("filter") as FilterType | null;
 
   const [activeFilter, setActiveFilter] = useState<FilterType>("All");
+  const [showFilter, setShowFilter] = useState(false);
 
   /* 🔹 SYNC URL → FILTER */
   useEffect(() => {
     if (filterFromUrl) {
       setActiveFilter(filterFromUrl);
+    } else {
+      setActiveFilter("All");
     }
   }, [filterFromUrl]);
+
+  /* 🔹 CLOSE FILTER ON OUTSIDE CLICK */
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest(".filter-dropdown")) {
+        setShowFilter(false);
+      }
+    };
+
+    if (showFilter) {
+      window.addEventListener("click", handleClickOutside);
+    }
+
+    return () => window.removeEventListener("click", handleClickOutside);
+  }, [showFilter]);
 
   /* 🔹 HANDLE FILTER CLICK */
   const handleFilterClick = (filter: FilterType) => {
@@ -75,30 +95,71 @@ export default function ProductsPage() {
           Explore our complete range of fresh & dry seafood.
         </p>
 
-        {/* 🔹 FILTER PILLS */}
-        <div className="flex flex-wrap gap-3 mb-10">
-          {["All", "Fish", "Prawns", "Crabs", "Dry Fish"].map((filter) => (
+        {/* 🔹 FILTER BAR */}
+    {/* 🔹 FILTER BAR */}
+<div className="flex items-center justify-between mb-10 relative">
+  
+  {/* LEFT: FILTER */}
+  <div className="relative">
+    {/* FILTER BUTTON */}
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        setShowFilter((prev) => !prev);
+      }}
+      className="flex items-center gap-2 px-4 py-2 rounded-lg
+                 border border-gray-300 bg-white text-sm
+                 hover:bg-gray-100 transition cursor-pointer"
+    >
+      <Filter size={16} />
+      Filter
+    </button>
+
+    {/* FILTER DROPDOWN */}
+    {showFilter && (
+      <div
+        className="filter-dropdown absolute left-0 top-12 w-52
+                   bg-white rounded-xl shadow-lg
+                   border border-gray-200 z-30 overflow-hidden"
+      >
+        {(["All", "Fish", "Prawns", "Crabs", "Dry Fish"] as FilterType[]).map(
+          (filter) => (
             <button
               key={filter}
-              onClick={() => handleFilterClick(filter as FilterType)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition cursor-pointer
-                ${
-                  activeFilter === filter
-                    ? "bg-[#005F86] text-white"
-                    : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-100"
-                }`}
+              onClick={() => {
+                handleFilterClick(filter);
+                setShowFilter(false);
+              }}
+              className={`w-full flex items-center justify-between
+                          px-4 py-2 text-sm transition cursor-pointer
+                          ${
+                            activeFilter === filter
+                              ? "bg-[#005F86] text-white"
+                              : "hover:bg-gray-100 text-gray-700"
+                          }`}
             >
               {filter}
+              {activeFilter === filter && <Check size={16} />}
             </button>
-          ))}
-        </div>
+          )
+        )}
+      </div>
+    )}
+  </div>
+
+  {/* RIGHT: STATUS TEXT */}
+  <p className="text-sm text-gray-600">
+    Showing <span className="font-semibold">{activeFilter}</span> products
+  </p>
+</div>
 
         {/* 🔹 PRODUCTS GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {filteredProducts.map((p) => (
             <div
               key={p.id}
-              className="group bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition"
+              className="group bg-white rounded-2xl shadow-md
+                         overflow-hidden hover:shadow-lg transition"
             >
               {/* IMAGE */}
               <div className="overflow-hidden">
@@ -113,7 +174,8 @@ export default function ProductsPage() {
 
               {/* CONTENT */}
               <div className="p-4 sm:p-5">
-                <span className="text-[11px] sm:text-xs bg-teal-100 text-teal-700 px-3 py-1 rounded-full">
+                <span className="text-[11px] sm:text-xs bg-teal-100
+                                 text-teal-700 px-3 py-1 rounded-full">
                   {p.category}
                 </span>
 
@@ -129,7 +191,8 @@ export default function ProductsPage() {
                 </p>
 
                 {/* WEIGHT INFO */}
-                <div className="mt-3 rounded-xl border border-gray-200 bg-white p-4 space-y-3 min-h-[110px]">
+                <div className="mt-3 rounded-xl border border-gray-200
+                                bg-white p-4 space-y-3 min-h-[110px]">
                   <div className={p.grossWeight ? "" : "invisible"}>
                     <p className="text-xs uppercase tracking-wide text-gray-500">
                       Gross Weight
@@ -161,8 +224,9 @@ export default function ProductsPage() {
                 {/* ADD TO CART */}
                 <button
                   onClick={() => addToCart(p)}
-                  className="mt-6 sm:mt-8 w-full bg-[#005F86] text-white
-                             h-9 sm:h-10 text-xs sm:text-sm rounded-lg
+                  className="mt-6 sm:mt-8 w-full bg-[#005F86]
+                             text-white h-9 sm:h-10
+                             text-xs sm:text-sm rounded-lg
                              flex items-center justify-center gap-2
                              hover:bg-[#004a68] transition cursor-pointer"
                 >

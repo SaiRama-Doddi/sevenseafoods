@@ -9,6 +9,8 @@ export default function FeaturedProducts() {
   const { addToCart } = useCart();
   return (
     <section className="bg-[#F6FBFC] py-10">
+
+
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-serif font-semibold text-center mb-3 italic">
           Featured Products

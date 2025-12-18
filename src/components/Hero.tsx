@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const images = [
   "/hero.jpg",
   "https://img.freepik.com/premium-photo/ocean-odyssey-fresh-seafood-adventures_960396-190971.jpg",
-  "https://thumbs.dreamstime.com/b/freshest-steak-fillet-fresh-atlantic-salmon-herbs-fish-chilled-ice-close-up-ready-to-eat-302100526.jpg",
+  "https://img.freepik.com/premium-photo/large-group-fish-swimming-ocean-generative-ai_792465-23.jpg",
 ];
 
 export default function Hero() {
