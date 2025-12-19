@@ -3,7 +3,7 @@ import { products } from "../types/product";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useSearchParams } from "react-router-dom";
-import { Filter, Check } from "lucide-react";
+import { Filter} from "lucide-react";
 import FishIconBackground from "../components/FishBackground";
 
 
