@@ -88,7 +88,7 @@ export const products: Product[] = [
     unit: "kg",
     netWeight: "500 grams",
     grossWeight: "1 kg count 4 to 6 pieces",
-    image: "https://i.pinimg.com/1200x/c3/68/b2/c368b2c5f9e60b6a6be81002fa110b2c.jpg",
+    image: "https://res.cloudinary.com/de7icka3e/image/upload/v1766123612/blue-crab_kjaac5.jpg",
   },
   {
     id: 8,
@@ -381,4 +381,27 @@ export const products: Product[] = [
     grossWeight: "1 kg count 10 to 15 pieces", 
     image: "https://5.imimg.com/data5/UI/JG/MY-37031394/vanjiram-fish-500x500.jpg",
   },
+  {
+  id: 37,
+  name: "Pandugoppa Fish",
+  category: "Fresh Fish",
+  price: 750,
+  unit: "kg",
+  netWeight: "600 grams (after cleaning)",
+  grossWeight: "Approx 1 kg before cleaning",
+  image: "https://res.cloudinary.com/de7icka3e/image/upload/v1766123612/pandugoppa-fish_jxgtru.jpg",
+  featured: false,
+},
+{
+  id: 38,
+  name: "Yellow Tuna Boneless Meat",
+  category: "Fresh Fish",
+  price: 550,
+  unit: "600 g",
+  netWeight: "600 grams (after cleaning)",
+  grossWeight: "Boneless cut",
+  image: "https://res.cloudinary.com/de7icka3e/image/upload/v1766123612/yellow-tuna-boneless-meat_ag8s2u.jpg",
+  featured: false,
+}
+
 ];
