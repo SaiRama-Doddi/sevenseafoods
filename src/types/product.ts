@@ -402,6 +402,29 @@ export const products: Product[] = [
   grossWeight: "Boneless cut",
   image: "https://res.cloudinary.com/de7icka3e/image/upload/v1766123612/yellow-tuna-boneless-meat_ag8s2u.jpg",
   featured: false,
+},
+{
+  id: 39,
+  name: "Salmon Fish",
+  category: "Fresh Fish",
+  price: 800,
+  unit: "kg",
+  netWeight: "800 grams (after cleaning)",
+  grossWeight: "1 kg before cleaning",
+  image: "/salman-fish.jpeg",
+  featured: false,
+},
+{
+  id: 40,
+  name: "Red Snapper Fish",
+  category: "Fresh Fish",
+  price: 600,
+  unit: "kg",
+  netWeight: "600 grams (after cleaning)",
+  grossWeight: "1 kg before cleaning",
+  image: "/red-sanper-fish.jpeg",
+  featured: false,
 }
+
 
 ];
