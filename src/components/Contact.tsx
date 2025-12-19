@@ -64,7 +64,7 @@ export default function Contact() {
                 </InfoItem>
 
                 <InfoItem icon={<Clock />} label="Working Hours">
-                  Mon – Sat : 6:00 AM – 5:00 PM
+                  Mon – Sun : 6:00 AM – 5:00 PM
                 </InfoItem>
               </div>
             </motion.div>
