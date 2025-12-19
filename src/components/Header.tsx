@@ -22,7 +22,7 @@ export default function Header() {
       {/* 🔹 TOP MARQUEE BAR */}
       <div className="bg-[#063f54] text-[#fddd15] text-sm overflow-hidden">
         <div className="whitespace-nowrap animate-marquee flex gap-12 py-2 font-medium">
-          <span>🚚 Free Service Available on Fresh & Dry Seafoods</span>
+          <span>🚚 Free Home Delivery Service Available on Fresh & Dry Seafoods</span>
           <span className="flex items-center gap-1">
             <Phone size={14} /> Contact: +91 84999 19197
           </span>
