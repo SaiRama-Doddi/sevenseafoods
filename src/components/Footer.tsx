@@ -63,23 +63,18 @@ export function Footer() {
             </h3>
             <ul className="space-y-2 text-sm text-yellow-100/90">
               <li>
-                <a href="#about" className="hover:text-[#fddd15] transition">
+                <a href="/about" className="hover:text-[#fddd15] transition">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-[#fddd15] transition">
+                <a href="/contact" className="hover:text-[#fddd15] transition">
                   Contact
                 </a>
               </li>
               <li>
-                <a href="#sustainability" className="hover:text-[#fddd15] transition">
-                  Sustainability
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-[#fddd15] transition">
-                  FAQ
+                <a href="/admin/login" className="hover:text-[#fddd15] font-semibold transition text-[#fddd15]/90">
+                  🔐 Admin Portal
                 </a>
               </li>
             </ul>

@@ -2,14 +2,15 @@ import { ShoppingCart, Menu, Phone } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 /* Active link style */
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   `relative font-medium transition-colors duration-200
    ${
      isActive
-       ? "text-[#fddd15] after:absolute after:left-0 after:-bottom-2 after:h-[2px] after:w-full after:bg-[#fddd15]"
-       : "text-white hover:text-[#fddd15]"
+       ? "text-black font-bold after:absolute after:left-0 after:-bottom-2 after:h-[2px] after:w-full after:bg-[#0B6A8B]"
+       : "text-black hover:text-[#0B6A8B]"
    }`;
 
 export default function Header() {
@@ -17,7 +18,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full">
+    <header className="sticky top-0 z-50 w-full bg-white">
 
       {/* 🔹 TOP MARQUEE BAR */}
       <div className="bg-[#063f54] text-[#fddd15] text-sm overflow-hidden">
@@ -31,20 +32,20 @@ export default function Header() {
       </div>
 
       {/* 🔹 MAIN HEADER */}
-      <div className="bg-[#0B6A8B] shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      <div className="bg-white shadow-md border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 flex items-center justify-between">
 
-          {/* LOGO */}
-          <NavLink to="/" className="flex items-center">
+          {/* LOGO (LEFT SIDE - ENLARGED) */}
+          <NavLink to="/" className="flex items-center shrink-0 py-1">
             <img
               src="/logo.png"
               alt="Seven Seafoods"
-              className="h-24 sm:h-20 md:h-28 object-contain"
+              className="h-16 sm:h-20 md:h-22 w-auto object-contain transition-transform duration-300 hover:scale-105 drop-shadow-sm"
             />
           </NavLink>
 
           {/* DESKTOP NAV */}
-          <nav className="hidden md:flex items-center gap-10 text-lg italic">
+          <nav className="hidden md:flex items-center gap-10 text-xl italic font-serif">
             <NavLink to="/" className={navLinkClass}>Home</NavLink>
             <NavLink to="/products" className={navLinkClass}>Products</NavLink>
             <NavLink to="/about" className={navLinkClass}>About</NavLink>
@@ -55,32 +56,40 @@ export default function Header() {
           <div className="flex items-center gap-4">
 
             {/* CART */}
-            <button
+            <motion.button
+              key={`cart-btn-${cart.reduce((a, b) => a + b.quantity, 0)}`}
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.25, 0.95, 1] }}
+              transition={{ duration: 0.4 }}
               onClick={toggleCart}
-              className="relative p-2 rounded-full hover:bg-white/10 transition"
+              className="relative p-2.5 rounded-full hover:bg-gray-100 transition cursor-pointer"
             >
-              <ShoppingCart className="w-6 h-6 text-[#fddd15]" />
+              <ShoppingCart className="w-7 h-7 text-black" />
               {cart.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#fddd15] text-[#0c2d48]
-                  text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
-                  {cart.length}
-                </span>
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-1 -right-1 bg-[#0B6A8B] text-white
+                    text-[11px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow"
+                >
+                  {cart.reduce((a, b) => a + b.quantity, 0)}
+                </motion.span>
               )}
-            </button>
+            </motion.button>
 
             {/* MOBILE MENU */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden p-2 rounded-full hover:bg-white/10"
+              className="md:hidden p-2 rounded-full hover:bg-gray-100 transition cursor-pointer"
             >
-              <Menu className="w-6 h-6 text-white" />
+              <Menu className="w-7 h-7 text-black" />
             </button>
           </div>
         </div>
 
         {/* MOBILE NAV */}
         {menuOpen && (
-          <div className="md:hidden bg-[#0c2d48] border-t border-white/10">
+          <div className="md:hidden bg-white border-t border-gray-200 shadow-lg animate-fadeIn">
             <nav className="flex flex-col px-6 py-4 space-y-4">
               {["/", "/products", "/about", "/contact"].map((path, i) => (
                 <NavLink
@@ -89,8 +98,8 @@ export default function Header() {
                   onClick={() => setMenuOpen(false)}
                   className={({ isActive }) =>
                     isActive
-                      ? "text-[#f4b400] font-semibold"
-                      : "text-white hover:text-[#f4b400]"
+                      ? "text-black font-bold"
+                      : "text-black/80 hover:text-black"
                   }
                 >
                   {path === "/" ? "Home" : path.replace("/", "").charAt(0).toUpperCase() + path.slice(2)}

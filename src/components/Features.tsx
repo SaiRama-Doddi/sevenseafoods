@@ -1,4 +1,5 @@
 import { ShieldCheck, Truck, BadgeCheck } from "lucide-react";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -30,21 +31,25 @@ export default function Features() {
           {features.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                whileHover={{ y: -8, scale: 1.02 }}
                 className="
                   bg-[#0B6A8B]
                   rounded-2xl
                   p-10
                   text-center
                   shadow-lg
-                  transition
-                  hover:-translate-y-1
-                  hover:shadow-xl
+                  hover:shadow-2xl
+                  transition-all duration-300
                 "
               >
                 {/* ICON */}
-                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white/10">
+                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white/10 shadow-inner">
                   <Icon className="h-8 w-8 text-[#fddd15]" />
                 </div>
 
@@ -54,10 +59,10 @@ export default function Features() {
                 </h3>
 
                 {/* DESCRIPTION */}
-                <p className="text-white/80 leading-relaxed">
+                <p className="text-white/80 leading-relaxed text-sm sm:text-base">
                   {item.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>
