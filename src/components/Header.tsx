@@ -25,7 +25,7 @@ export default function Header() {
         <div className="whitespace-nowrap animate-marquee flex gap-12 py-2 font-medium">
           <span>🚚 Free Home Delivery Service Available on Fresh & Dry Seafoods</span>
           <span className="flex items-center gap-1">
-            <Phone size={14} /> Contact: +91 84999 19197
+            <Phone size={14} /> Contact: +91 81216 02002
           </span>
           <span>🐟 Premium Quality | Hygienic Cleaning | Fast Delivery</span>
         </div>

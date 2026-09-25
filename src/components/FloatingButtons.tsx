@@ -6,7 +6,7 @@ const FloatingButtons: React.FC = () => {
 
   // WhatsApp click handler
   const handleWhatsApp = () => {
-    const phoneNumber = "918499919197";
+    const phoneNumber = "918121602002";
     const message = "Hello! I would like to know more about your services.";
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message

@@ -52,7 +52,7 @@ ${productLines}
 💰 *Total:* ₹${subtotal}
     `;
 
-    const whatsappUrl = `https://wa.me/918499919197?text=${encodeURIComponent(
+    const whatsappUrl = `https://wa.me/918121602002?text=${encodeURIComponent(
       message
     )}`;
 

@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Clock, Sparkles } from "lucide-react";
 
 export function Footer() {
   return (
@@ -14,13 +14,17 @@ export function Footer() {
               <img
                 src="/logo.png"
                 alt="7seafoods Logo"
-                className="h-30 w-auto object-contain"
+                className="h-28 w-auto object-contain"
               />
             </a>
             <p className="text-sm text-yellow-100/90 leading-relaxed max-w-xs">
               Delivering premium, sustainably sourced seafood fresh from ocean
               to your table.
             </p>
+            <div className="flex items-start gap-2 text-xs font-semibold text-[#fddd15] bg-white/10 p-2.5 rounded-lg border border-yellow-300/20 max-w-xs">
+              <Sparkles size={16} className="shrink-0 mt-0.5" />
+              <span>Vizag local 10km free home delivery service available</span>
+            </div>
           </div>
 
           {/* SHOP */}
@@ -32,23 +36,39 @@ export function Footer() {
               <li>
                 <a
                   href="/products?category=Fish"
-                  className="hover:text-[#fddd15] transition"
+                  className="hover:text-[#fddd15] transition capitalize"
                 >
-                  Fresh Fish
+                  Fish
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/products?category=Prawns"
+                  className="hover:text-[#fddd15] transition capitalize"
+                >
+                  Prawns
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/products?category=Crab"
+                  className="hover:text-[#fddd15] transition capitalize"
+                >
+                  Crab's
                 </a>
               </li>
               <li>
                 <a
                   href="/products?category=Shellfish"
-                  className="hover:text-[#fddd15] transition"
+                  className="hover:text-[#fddd15] transition capitalize"
                 >
                   Shellfish
                 </a>
               </li>
               <li>
                 <a
-                  href="/products?category=Specialty"
-                  className="hover:text-[#fddd15] transition"
+                  href="/products?category=Dry Seafood"
+                  className="hover:text-[#fddd15] transition capitalize"
                 >
                   Dry Seafood
                 </a>
@@ -82,19 +102,19 @@ export function Footer() {
             </h3>
             <div className="space-y-3 text-sm text-yellow-100/90 mb-5">
               <a 
-                href="tel:+918499919197" 
-                className="flex items-start gap-2.5 hover:text-[#fddd15] transition"
+                href="tel:+918121602002" 
+                className="flex items-start gap-2.5 hover:text-[#fddd15] transition font-medium text-base text-white"
               >
-                <Phone size={16} className="text-[#fddd15] shrink-0 mt-0.5" />
-                <span>+91 84999 19197</span>
+                <Phone size={18} className="text-[#fddd15] shrink-0 mt-0.5" />
+                <span>+91 81216 02002</span>
               </a>
 
               <a 
-                href="mailto:sevenseafoods7@gmail.com" 
+                href="mailto:7seafoods.in@gmail.com" 
                 className="flex items-start gap-2.5 hover:text-[#fddd15] transition break-all"
               >
                 <Mail size={16} className="text-[#fddd15] shrink-0 mt-0.5" />
-                <span>sevenseafoods7@gmail.com</span>
+                <span>7seafoods.in@gmail.com</span>
               </a>
 
               <div className="flex items-start gap-2.5">
@@ -105,6 +125,10 @@ export function Footer() {
               <div className="flex items-start gap-2.5">
                 <Clock size={16} className="text-[#fddd15] shrink-0 mt-0.5" />
                 <span>Mon – Sun : 6:00 AM – 5:00 PM</span>
+              </div>
+
+              <div className="text-xs text-[#fddd15] font-semibold pt-1">
+                Fresh quality seafoods supply in Vizag
               </div>
             </div>
 
