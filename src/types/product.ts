@@ -12,6 +12,7 @@ export interface Product {
   grossWeight?: string;
   image: string;
   featured?: boolean;
+  inStock?: boolean;
 }
 
 export const products: Product[] = [

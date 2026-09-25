@@ -56,7 +56,9 @@ export default function Contact() {
                 </InfoItem>
 
                 <InfoItem icon={<Mail />} label="Email">
-                  sevenseafoods7@gmail.com
+                  <a href="mailto:7SEAFOODS.IN@GMAIL.COM" className="hover:text-yellow-400 transition">
+                    7SEAFOODS.IN@GMAIL.COM
+                  </a>
                 </InfoItem>
 
                 <InfoItem icon={<MapPin />} label="Location">

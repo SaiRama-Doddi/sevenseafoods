@@ -29,6 +29,7 @@ export default function AdminDashboard() {
   // Search & Filter state
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [selectedStock, setSelectedStock] = useState<string>("All");
 
   // Modal states
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -45,6 +46,7 @@ export default function AdminDashboard() {
     grossWeight: "",
     image: "",
     featured: false,
+    inStock: true,
   });
 
   const [imageUploadType, setImageUploadType] = useState<"upload" | "url">("upload");
@@ -59,7 +61,11 @@ export default function AdminDashboard() {
   const filteredProducts = products.filter((p) => {
     const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+    const matchesStock = 
+      selectedStock === "All" ||
+      (selectedStock === "In Stock" && p.inStock !== false) ||
+      (selectedStock === "Out of Stock" && p.inStock === false);
+    return matchesSearch && matchesCategory && matchesStock;
   });
 
   // Handle Form Open for Add
@@ -73,6 +79,7 @@ export default function AdminDashboard() {
       grossWeight: "1 kg",
       image: "https://images.unsplash.com/photo-1534482421-64566f976cfa?auto=format&fit=crop&w=800&q=80",
       featured: false,
+      inStock: true,
     });
     setIsAddModalOpen(true);
   };
@@ -89,6 +96,7 @@ export default function AdminDashboard() {
       grossWeight: product.grossWeight || "",
       image: product.image,
       featured: !!product.featured,
+      inStock: product.inStock !== false,
     });
   };
 
@@ -118,6 +126,7 @@ export default function AdminDashboard() {
       grossWeight: formData.grossWeight || undefined,
       image: formData.image,
       featured: formData.featured,
+      inStock: formData.inStock,
     });
     setIsAddModalOpen(false);
   };
@@ -135,6 +144,7 @@ export default function AdminDashboard() {
       grossWeight: formData.grossWeight || undefined,
       image: formData.image,
       featured: formData.featured,
+      inStock: formData.inStock,
     });
     setEditingProduct(null);
   };
@@ -196,32 +206,32 @@ export default function AdminDashboard() {
           </div>
 
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <Fish size={24} />
+            </div>
+            <div>
+              <p className="text-xs text-gray-500 font-medium uppercase">In Stock (Available)</p>
+              <p className="text-2xl font-bold text-emerald-600">{products.filter(p => p.inStock !== false).length}</p>
+            </div>
+          </div>
+
+          <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center">
+              <Package size={24} />
+            </div>
+            <div>
+              <p className="text-xs text-gray-500 font-medium uppercase">Out of Stock</p>
+              <p className="text-2xl font-bold text-red-600">{products.filter(p => p.inStock === false).length}</p>
+            </div>
+          </div>
+
+          <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
               <Star size={24} />
             </div>
             <div>
               <p className="text-xs text-gray-500 font-medium uppercase">Featured Items</p>
               <p className="text-2xl font-bold text-gray-900">{products.filter(p => p.featured).length}</p>
-            </div>
-          </div>
-
-          <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center">
-              <Fish size={24} />
-            </div>
-            <div>
-              <p className="text-xs text-gray-500 font-medium uppercase">Fresh Fish</p>
-              <p className="text-2xl font-bold text-gray-900">{products.filter(p => p.category === "Fresh Fish").length}</p>
-            </div>
-          </div>
-
-          <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
-              <Layers size={24} />
-            </div>
-            <div>
-              <p className="text-xs text-gray-500 font-medium uppercase">Shellfish & Dry</p>
-              <p className="text-2xl font-bold text-gray-900">{products.filter(p => p.category !== "Fresh Fish").length}</p>
             </div>
           </div>
         </div>
@@ -254,6 +264,19 @@ export default function AdminDashboard() {
                 <option value="Fresh Fish">Fresh Fish</option>
                 <option value="Shellfish">Shellfish</option>
                 <option value="Dry Seafood">Dry Seafood</option>
+              </select>
+            </div>
+
+            {/* Stock Select */}
+            <div className="relative">
+              <select
+                value={selectedStock}
+                onChange={(e) => setSelectedStock(e.target.value)}
+                className="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 focus:outline-none cursor-pointer"
+              >
+                <option value="All">All Stock Status</option>
+                <option value="In Stock">In Stock (Available)</option>
+                <option value="Out of Stock">Out of Stock</option>
               </select>
             </div>
           </div>
@@ -291,6 +314,7 @@ export default function AdminDashboard() {
                     <th className="py-4 px-4">Category</th>
                     <th className="py-4 px-4">Price</th>
                     <th className="py-4 px-4">Net / Gross Weight</th>
+                    <th className="py-4 px-4">Stock Status</th>
                     <th className="py-4 px-4">Featured</th>
                     <th className="py-4 px-6 text-right">Actions</th>
                   </tr>
@@ -329,6 +353,22 @@ export default function AdminDashboard() {
                       <td className="py-4 px-4 text-xs text-gray-600">
                         <p><b className="text-gray-900">Net:</b> {p.netWeight}</p>
                         {p.grossWeight && <p className="text-gray-400">Gross: {p.grossWeight}</p>}
+                      </td>
+
+                      {/* Stock Status Dropdown */}
+                      <td className="py-4 px-4">
+                        <select
+                          value={p.inStock !== false ? "Available" : "Out of Stock"}
+                          onChange={(e) => updateProduct(p.id, { inStock: e.target.value === "Available" })}
+                          className={`text-xs font-semibold px-3 py-1.5 rounded-lg border focus:outline-none cursor-pointer transition ${
+                            p.inStock !== false
+                              ? "bg-emerald-50 text-emerald-700 border-emerald-300 hover:bg-emerald-100"
+                              : "bg-red-50 text-red-700 border-red-300 hover:bg-red-100"
+                          }`}
+                        >
+                          <option value="Available">Available</option>
+                          <option value="Out of Stock">Out of Stock</option>
+                        </select>
                       </td>
 
                       {/* Featured */}
@@ -492,18 +532,32 @@ export default function AdminDashboard() {
                       />
                     </div>
 
-                    {/* Featured Toggle */}
-                    <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-2xl border border-gray-200/80">
-                      <input
-                        type="checkbox"
-                        id="featured"
-                        checked={formData.featured}
-                        onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                        className="w-5 h-5 text-[#005F86] rounded focus:ring-[#005F86] cursor-pointer"
-                      />
-                      <label htmlFor="featured" className="text-sm font-semibold text-gray-800 cursor-pointer">
-                        Feature this product on Home Page
-                      </label>
+                    {/* Stock Availability & Featured Toggle */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-semibold text-gray-700 uppercase mb-1">Stock Availability</label>
+                        <select
+                          value={formData.inStock ? "Available" : "Out of Stock"}
+                          onChange={(e) => setFormData({ ...formData, inStock: e.target.value === "Available" })}
+                          className="w-full border border-gray-300 rounded-xl px-3 py-3 text-sm focus:outline-none focus:border-[#005F86] cursor-pointer font-medium"
+                        >
+                          <option value="Available">Available (In Stock)</option>
+                          <option value="Out of Stock">Out of Stock (Hidden on store)</option>
+                        </select>
+                      </div>
+
+                      <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-2xl border border-gray-200/80">
+                        <input
+                          type="checkbox"
+                          id="featured"
+                          checked={formData.featured}
+                          onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
+                          className="w-5 h-5 text-[#005F86] rounded focus:ring-[#005F86] cursor-pointer"
+                        />
+                        <label htmlFor="featured" className="text-sm font-semibold text-gray-800 cursor-pointer">
+                          Feature on Home Page
+                        </label>
+                      </div>
                     </div>
 
                   </div>

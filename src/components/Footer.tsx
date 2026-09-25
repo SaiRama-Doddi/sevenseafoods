@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Facebook, Instagram, Twitter, Mail, Phone } from "lucide-react";
 
 export function Footer() {
   return (
@@ -80,11 +80,30 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* SOCIAL */}
+          {/* CONTACT & SOCIAL */}
           <div>
             <h3 className="font-semibold mb-4 text-[#fddd15]">
-              Follow Us
+              Get In Touch
             </h3>
+            <div className="space-y-2.5 text-sm text-yellow-100/90 mb-5">
+              <a 
+                href="mailto:7SEAFOODS.IN@GMAIL.COM" 
+                className="flex items-center gap-2 hover:text-[#fddd15] transition break-all"
+              >
+                <Mail size={16} className="text-[#fddd15] shrink-0" />
+                <span>7SEAFOODS.IN@GMAIL.COM</span>
+              </a>
+              <a 
+                href="tel:+918499919197" 
+                className="flex items-center gap-2 hover:text-[#fddd15] transition"
+              >
+                <Phone size={16} className="text-[#fddd15] shrink-0" />
+                <span>+91 84999 19197</span>
+              </a>
+            </div>
+            <h4 className="font-semibold mb-3 text-[#fddd15] text-xs uppercase tracking-wider">
+              Follow Us
+            </h4>
             <div className="flex gap-4">
               {[Facebook, Instagram, Twitter].map((Icon, i) => (
                 <a

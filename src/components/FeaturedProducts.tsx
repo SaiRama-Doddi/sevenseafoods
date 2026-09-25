@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export default function FeaturedProducts() {
   const { products } = useProducts();
-  const featured = products.filter(p => p.featured).slice(0, 8);
+  const featured = products.filter(p => p.featured && p.inStock !== false).slice(0, 8);
   const { addToCart, addedAnimationId } = useCart();
   return (
     <section className="
