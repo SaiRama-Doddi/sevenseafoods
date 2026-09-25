@@ -1,9 +1,38 @@
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { useState } from "react";
+import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [service, setService] = useState("Fresh Seafood Supply");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!name.trim() || !phone.trim()) {
+      alert("Please fill in your name and phone number.");
+      return;
+    }
+
+    const whatsappNumber = "918499919197";
+    const text = `*New Quote Request / Inquiry - Seven Seafoods* 🐟
+--------------------------------
+👤 *Name:* ${name.trim()}
+📧 *Email:* ${email.trim() || "N/A"}
+📞 *Phone:* ${phone.trim()}
+🏷️ *Service:* ${service}
+📝 *Message:* ${message.trim() || "N/A"}
+--------------------------------`;
+
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+  };
+
   return (
-    <section className="relative py-28  overflow-hidden page-enter">
+    <section className="relative py-28 overflow-hidden page-enter">
       <div className="max-w-7xl mx-auto px-4 relative">
 
         {/* BLUE BACK PANEL */}
@@ -87,7 +116,7 @@ export default function Contact() {
             bg-yellow-500
             rounded-2xl
             shadow-2xl
-            p-12
+            p-10 sm:p-12
             w-full
             max-w-md
             mx-auto
@@ -99,33 +128,86 @@ export default function Contact() {
             justify-center
           "
         >
-          <h3 className="text-2xl font-semibold text-[#0c2d48] mb-8">
+          <h3 className="text-2xl font-semibold text-[#0c2d48] mb-6">
             Request a Quote
           </h3>
 
-          <form className="space-y-5">
-            <Input placeholder="Full Name" />
-            <Input type="email" placeholder="Email Address" />
-            <Input type="tel" placeholder="Phone Number" />
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-xs font-semibold text-[#0c2d48] uppercase mb-1">
+                Full Name *
+              </label>
+              <input
+                type="text"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter your full name"
+                className="w-full bg-white px-4 py-3 rounded-md text-sm text-gray-900 placeholder-gray-400 outline-none shadow-xs"
+              />
+            </div>
 
-            <select className="w-full bg-white px-4 py-3 rounded-md text-sm text-gray-700 outline-none">
-              <option>Select Service</option>
-              <option>Fresh Seafood Supply</option>
-              <option>Bulk Orders</option>
-              <option>Export Enquiry</option>
-            </select>
+            <div>
+              <label className="block text-xs font-semibold text-[#0c2d48] uppercase mb-1">
+                Email Address
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="w-full bg-white px-4 py-3 rounded-md text-sm text-gray-900 placeholder-gray-400 outline-none shadow-xs"
+              />
+            </div>
 
-            <textarea
-              rows={4}
-              placeholder="Your Message"
-              className="w-full bg-white px-4 py-3 rounded-md text-sm text-gray-900 placeholder-gray-400 outline-none resize-none"
-            />
+            <div>
+              <label className="block text-xs font-semibold text-[#0c2d48] uppercase mb-1">
+                Phone Number *
+              </label>
+              <input
+                type="tel"
+                required
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Enter phone number"
+                className="w-full bg-white px-4 py-3 rounded-md text-sm text-gray-900 placeholder-gray-400 outline-none shadow-xs"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#0c2d48] uppercase mb-1">
+                Select Service
+              </label>
+              <select
+                value={service}
+                onChange={(e) => setService(e.target.value)}
+                className="w-full bg-white px-4 py-3 rounded-md text-sm text-gray-800 outline-none shadow-xs cursor-pointer font-medium"
+              >
+                <option value="Fresh Seafood Supply">Fresh Seafood Supply</option>
+                <option value="Bulk Orders">Bulk Orders</option>
+                <option value="Export Enquiry">Export Enquiry</option>
+                <option value="Other Enquiries">Other Enquiries</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#0c2d48] uppercase mb-1">
+                Your Message
+              </label>
+              <textarea
+                rows={3}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Tell us what seafood or quantity you need..."
+                className="w-full bg-white px-4 py-3 rounded-md text-sm text-gray-900 placeholder-gray-400 outline-none resize-none shadow-xs"
+              />
+            </div>
 
             <button
               type="submit"
-              className="mt-4 w-full bg-[#0c2d48] text-white py-3 rounded-md text-sm font-semibold tracking-wide hover:bg-[#09345a] transition"
+              className="mt-4 w-full bg-[#0c2d48] hover:bg-[#09345a] text-white py-3.5 rounded-md text-sm font-semibold tracking-wide transition flex items-center justify-center gap-2.5 shadow-lg cursor-pointer transform hover:scale-[1.02]"
             >
-              SUBMIT NOW
+              <MessageCircle size={18} className="text-emerald-400" /> SUBMIT VIA WHATSAPP
             </button>
           </form>
         </motion.div>
