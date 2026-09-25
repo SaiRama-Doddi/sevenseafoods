@@ -242,19 +242,3 @@ function InfoItem({
     </motion.div>
   );
 }
-
-function Input({
-  placeholder,
-  type = "text",
-}: {
-  placeholder: string;
-  type?: string;
-}) {
-  return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      className="w-full bg-white px-4 py-3 rounded-md text-sm text-gray-900 placeholder-gray-400 outline-none"
-    />
-  );
-}

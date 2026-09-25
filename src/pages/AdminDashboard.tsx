@@ -15,7 +15,6 @@ import {
   Filter, 
   X, 
   Fish, 
-  Layers,
   Upload,
   Image as ImageIcon,
   Link as LinkIcon
