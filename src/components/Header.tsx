@@ -33,14 +33,14 @@ export default function Header() {
 
       {/* 🔹 MAIN HEADER */}
       <div className="bg-white shadow-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-18 md:h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-22 md:h-22 flex items-center justify-between">
 
           {/* LOGO (LEFT SIDE - ENLARGED) */}
-          <NavLink to="/" className="flex items-center shrink-0 py-0.5">
+          <NavLink to="/" className="flex items-center shrink-0 py-1">
             <img
               src="/logo.png"
               alt="Seven Seafoods"
-              className="h-14 sm:h-18 md:h-22 lg:h-24 w-auto object-contain transition-transform duration-300 hover:scale-105 drop-shadow-sm"
+              className="h-18 sm:h-20 md:h-24 lg:h-26 w-auto object-contain transition-transform duration-300 hover:scale-105 drop-shadow-sm"
             />
           </NavLink>
 

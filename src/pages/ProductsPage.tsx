@@ -252,10 +252,10 @@ export default function ProductsPage() {
               )}
             </div>
 
-            {/* ================= PRODUCTS GRID WITH MOTION ================= */}
+            {/* ================= PRODUCTS GRID WITH MOTION (2 CARDS PER ROW ON MOBILE) ================= */}
             <motion.div
               layout
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8"
             >
               <AnimatePresence>
                 {filteredProducts.map((p, idx) => {
@@ -272,57 +272,57 @@ export default function ProductsPage() {
                       whileHover={{ y: -6 }}
                       className="group bg-white rounded-2xl shadow-md
                                  overflow-hidden hover:shadow-xl transition-all duration-300
-                                 flex flex-col h-full"
+                                 flex flex-col h-full justify-between"
                     >
                       {/* IMAGE */}
                       <div className="overflow-hidden">
                         <img
                           src={p.image}
                           alt={p.name}
-                          className="h-44 sm:h-48 lg:h-52 w-full object-cover
+                          className="h-36 sm:h-48 lg:h-52 w-full object-cover
                                      transition-transform duration-700 ease-out
                                      group-hover:scale-110"
                         />
                       </div>
 
                       {/* CONTENT */}
-                      <div className="p-4 sm:p-5 flex flex-col flex-1">
-                        <span className="text-[11px] sm:text-xs bg-teal-100
-                                         text-teal-700 px-3 py-1 rounded-full w-fit font-medium">
+                      <div className="p-3 sm:p-5 flex flex-col flex-1">
+                        <span className="text-[10px] sm:text-xs bg-teal-100
+                                         text-teal-700 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full w-fit font-medium">
                           {p.category}
                         </span>
 
                         {/* TITLE */}
-                        <h3 className="font-semibold text-base sm:text-lg mt-2 min-h-12 text-gray-900">
+                        <h3 className="font-semibold text-xs sm:text-base md:text-lg mt-1.5 sm:mt-2 min-h-[32px] sm:min-h-[48px] text-gray-900 line-clamp-2">
                           {p.name}
                         </h3>
 
-                        <p className="text-lg sm:text-xl font-bold text-[#005F86] mt-2">
+                        <p className="text-base sm:text-xl font-bold text-[#005F86] mt-1 sm:mt-2">
                           ₹{p.price}.00{" "}
-                          <span className="text-xs sm:text-sm font-normal text-gray-500">
+                          <span className="text-[10px] sm:text-sm font-normal text-gray-500">
                             / {p.unit}
                           </span>
                         </p>
 
                         {/* WEIGHT INFO */}
-                        <div className="mt-3 rounded-xl 
-                                        bg-gray-50/60 p-4 space-y-3 min-h-[110px] border border-gray-100">
+                        <div className="mt-2 sm:mt-3 rounded-xl 
+                                        bg-gray-50/60 p-2.5 sm:p-4 space-y-2 sm:space-y-3 min-h-[85px] sm:min-h-[110px] border border-gray-100">
                           <div className={p.grossWeight ? "" : "invisible"}>
-                            <p className="text-xs uppercase tracking-wide text-gray-500">
+                            <p className="text-[10px] sm:text-xs uppercase tracking-wide text-gray-500">
                               Gross Weight
                             </p>
-                            <p className="text-sm font-semibold text-gray-900">
+                            <p className="text-xs sm:text-sm font-semibold text-gray-900 truncate">
                               {p.grossWeight || "—"}
                             </p>
                           </div>
 
-                          <div className="min-h-11">
-                            <p className="text-xs uppercase tracking-wide text-gray-500">
+                          <div className="min-h-9 sm:min-h-11">
+                            <p className="text-[10px] sm:text-xs uppercase tracking-wide text-gray-500">
                               Net Weight
                             </p>
 
                             <p
-                              className={`text-sm font-semibold ${
+                              className={`text-xs sm:text-sm font-semibold truncate ${
                                 p.grossWeight ? "text-green-700" : "text-gray-900"
                               }`}
                             >
@@ -330,8 +330,8 @@ export default function ProductsPage() {
                             </p>
 
                             <p
-                              className={`text-xs ${
-                                p.grossWeight ? "text-gray-500" : "invisible"
+                              className={`text-[10px] ${
+                                p.grossWeight ? "text-gray-500 hidden sm:block" : "invisible"
                               }`}
                             >
                               (After Cleaning)
@@ -343,7 +343,7 @@ export default function ProductsPage() {
                         <motion.button
                           whileTap={{ scale: 0.92 }}
                           onClick={() => addToCart(p)}
-                          className={`mt-auto w-full h-9 sm:h-10 text-xs sm:text-sm rounded-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer ${
+                          className={`mt-auto w-full h-8 sm:h-10 text-xs sm:text-sm rounded-lg font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer ${
                             isAdded
                               ? "bg-emerald-600 text-white shadow-emerald-200"
                               : "bg-[#005F86] hover:bg-[#004a68] text-white"
@@ -353,13 +353,13 @@ export default function ProductsPage() {
                             <motion.span
                               initial={{ scale: 0.5 }}
                               animate={{ scale: 1 }}
-                              className="flex items-center gap-1.5"
+                              className="flex items-center gap-1 text-xs"
                             >
-                              <Check size={16} className="stroke-[3]" /> Added!
+                              <Check size={14} className="stroke-[3]" /> Added!
                             </motion.span>
                           ) : (
                             <>
-                              <ShoppingCart size={16} /> Add to Cart
+                              <ShoppingCart size={14} /> Add to Cart
                             </>
                           )}
                         </motion.button>
