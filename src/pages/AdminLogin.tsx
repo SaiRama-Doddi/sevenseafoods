@@ -2,7 +2,7 @@ import { useState, type FormEvent } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Lock, Mail, ShieldAlert, ArrowRight } from "lucide-react";
+import { Lock, Mail, ShieldAlert, ArrowRight, Eye, EyeOff } from "lucide-react";
 
 export default function AdminLogin() {
   const { login, user } = useAuth();
@@ -10,6 +10,7 @@ export default function AdminLogin() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -41,28 +42,28 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="w-full max-w-full min-h-[calc(100vh-140px)] bg-slate-900 flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
       {/* Background Subtle Gradient Glow */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#0B6A8B]/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[#fddd15]/20 rounded-full blur-3xl" />
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#0B6A8B]/30 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[#fddd15]/20 rounded-full blur-3xl pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden z-10 border border-gray-100"
+        className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden z-10 border border-gray-100 my-8"
       >
         {/* HEADER */}
-        <div className="bg-[#063f54] p-8 text-center relative">
+        <div className="bg-[#063f54] p-6 sm:p-8 text-center relative">
           <div className="w-16 h-16 bg-[#fddd15] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg text-[#063f54]">
             <Lock size={28} />
           </div>
-          <h2 className="text-2xl font-bold text-white">Seven Seafoods Admin</h2>
-          <p className="text-gray-300 text-sm mt-1">Sign in with Firebase to manage inventory & orders</p>
+          <h2 className="text-xl sm:text-2xl font-bold text-white">Seven Seafoods Admin</h2>
+          <p className="text-gray-300 text-xs sm:text-sm mt-1">Sign in with Firebase to manage inventory & orders</p>
         </div>
 
         {/* FORM */}
-        <form onSubmit={handleSubmit} className="p-8 space-y-5">
+        <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-5">
           {error && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -79,7 +80,7 @@ export default function AdminLogin() {
               Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-3.5 top-3.5 text-gray-400" size={18} />
+              <Mail className="absolute left-3.5 top-3.5 text-gray-400 pointer-events-none" size={18} />
               <input
                 type="email"
                 required
@@ -95,16 +96,25 @@ export default function AdminLogin() {
             <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-2">
               Password
             </label>
-            <div className="relative">
-              <Lock className="absolute left-3.5 top-3.5 text-gray-400" size={18} />
+            <div className="relative flex items-center">
+              <Lock className="absolute left-3.5 text-gray-400 pointer-events-none" size={18} />
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#0B6A8B] focus:ring-1 focus:ring-[#0B6A8B] transition"
+                className="w-full pl-11 pr-12 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#0B6A8B] focus:ring-1 focus:ring-[#0B6A8B] transition"
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3.5 text-gray-400 hover:text-gray-600 transition cursor-pointer p-1"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                title={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
             </div>
           </div>
 

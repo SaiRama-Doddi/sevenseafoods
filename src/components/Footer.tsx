@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter, Mail, Phone } from "lucide-react";
+import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Clock } from "lucide-react";
 
 export function Footer() {
   return (
@@ -72,11 +72,6 @@ export function Footer() {
                   Contact
                 </a>
               </li>
-              <li>
-                <a href="/admin/login" className="hover:text-[#fddd15] font-semibold transition text-[#fddd15]/90">
-                  🔐 Admin Portal
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -85,32 +80,44 @@ export function Footer() {
             <h3 className="font-semibold mb-4 text-[#fddd15]">
               Get In Touch
             </h3>
-            <div className="space-y-2.5 text-sm text-yellow-100/90 mb-5">
-              <a 
-                href="mailto:7SEAFOODS.IN@GMAIL.COM" 
-                className="flex items-center gap-2 hover:text-[#fddd15] transition break-all"
-              >
-                <Mail size={16} className="text-[#fddd15] shrink-0" />
-                <span>7SEAFOODS.IN@GMAIL.COM</span>
-              </a>
+            <div className="space-y-3 text-sm text-yellow-100/90 mb-5">
               <a 
                 href="tel:+918499919197" 
-                className="flex items-center gap-2 hover:text-[#fddd15] transition"
+                className="flex items-start gap-2.5 hover:text-[#fddd15] transition"
               >
-                <Phone size={16} className="text-[#fddd15] shrink-0" />
+                <Phone size={16} className="text-[#fddd15] shrink-0 mt-0.5" />
                 <span>+91 84999 19197</span>
               </a>
+
+              <a 
+                href="mailto:sevenseafoods7@gmail.com" 
+                className="flex items-start gap-2.5 hover:text-[#fddd15] transition break-all"
+              >
+                <Mail size={16} className="text-[#fddd15] shrink-0 mt-0.5" />
+                <span>sevenseafoods7@gmail.com</span>
+              </a>
+
+              <div className="flex items-start gap-2.5">
+                <MapPin size={16} className="text-[#fddd15] shrink-0 mt-0.5" />
+                <span>Fishing Harbour, Visakhapatnam – 530001</span>
+              </div>
+
+              <div className="flex items-start gap-2.5">
+                <Clock size={16} className="text-[#fddd15] shrink-0 mt-0.5" />
+                <span>Mon – Sun : 6:00 AM – 5:00 PM</span>
+              </div>
             </div>
+
             <h4 className="font-semibold mb-3 text-[#fddd15] text-xs uppercase tracking-wider">
               Follow Us
             </h4>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {[Facebook, Instagram, Twitter].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
                   className="
-                    p-3 rounded-full
+                    p-2.5 rounded-full
                     bg-white/10
                     text-[#fddd15]
                     hover:bg-[#fddd15]

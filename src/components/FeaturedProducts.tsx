@@ -1,5 +1,5 @@
 // src/components/FeaturedProducts.tsx
-import { ShoppingCart, Check } from "lucide-react";
+import { ShoppingCart, Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useProducts } from "../context/ProductContext";
@@ -153,13 +153,28 @@ export default function FeaturedProducts() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-12"
+          className="text-center mt-12 sm:mt-16 flex justify-center"
         >
           <Link
             to="/products"
-            className="inline-block border border-[#005F86] text-[#005F86] hover:bg-[#005F86] hover:text-white px-8 py-3 rounded-xl font-medium transition-all duration-300 shadow-sm hover:shadow"
+            className="
+              group relative inline-flex items-center justify-center gap-3
+              bg-gradient-to-r from-[#005F86] via-[#0B6A8B] to-[#005F86]
+              text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-2xl
+              font-bold text-base sm:text-lg
+              shadow-lg shadow-[#005F86]/30 hover:shadow-2xl hover:shadow-[#005F86]/50
+              hover:scale-105 active:scale-95
+              transition-all duration-300
+              border border-cyan-400/30 overflow-hidden
+              ring-4 ring-[#005F86]/10
+            "
           >
-            View All Products
+            {/* Shimmer effect on hover */}
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+            
+            <span>View All Products</span>
+            
+            <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1.5" />
           </Link>
         </motion.div>
       </div>
