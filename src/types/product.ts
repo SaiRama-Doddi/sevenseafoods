@@ -255,7 +255,7 @@ export const products: Product[] = [
     unit: "kg",
     netWeight: "700 grams",
     grossWeight: "1 kg",
-    image: "https://www.healthifyme.com/blog/wp-content/uploads/2023/06/shutterstock_1829757968-1.jpg",
+    image: "https://images.unsplash.com/photo-1534482421-64566f976cfa?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 24,
@@ -265,7 +265,7 @@ export const products: Product[] = [
     unit: "kg",
     netWeight: "800 grams",
     grossWeight: "1 kg count 6 to 8 pieces",
-    image: "http://doofdoof.in/cdn/shop/products/images_12.jpg?v=1668691097",
+    image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 25,

@@ -89,18 +89,9 @@ export function ProductProvider({ children }: { children: ReactNode }) {
   const updateProduct = async (id: number, updatedFields: Partial<Product>) => {
     try {
       const docRef = doc(db, "products", String(id));
-      await updateDoc(docRef, updatedFields);
+      await setDoc(docRef, updatedFields, { merge: true });
     } catch (err) {
-      console.warn("Firestore updateDoc error, attempting setDoc fallback:", err);
-      try {
-        const docRef = doc(db, "products", String(id));
-        const existing = productList.find((p) => p.id === id);
-        if (existing) {
-          await setDoc(docRef, { ...existing, ...updatedFields });
-        }
-      } catch (innerErr) {
-        console.error("Firestore setDoc fallback failed:", innerErr);
-      }
+      console.warn("Firestore error updating product:", err);
     }
     setProductList((prev) =>
       prev.map((p) => (p.id === id ? { ...p, ...updatedFields } : p))

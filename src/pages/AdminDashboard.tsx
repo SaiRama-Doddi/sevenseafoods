@@ -167,17 +167,18 @@ export default function AdminDashboard() {
     if (isSubmitting || uploadingImage) return;
     setIsSubmitting(true);
     try {
-      await addProduct({
+      const payload: Omit<Product, "id"> = {
         name: formData.name,
         category: formData.category,
         price: Number(formData.price),
         unit: formData.unit,
         netWeight: formData.netWeight,
-        grossWeight: formData.grossWeight || undefined,
-        image: formData.image,
+        grossWeight: formData.grossWeight || "",
+        image: formData.image || "https://images.unsplash.com/photo-1534482421-64566f976cfa?auto=format&fit=crop&w=800&q=80",
         featured: formData.featured,
         inStock: formData.inStock,
-      });
+      };
+      await addProduct(payload);
       setIsAddModalOpen(false);
     } catch (err) {
       console.error("Error adding product:", err);
@@ -193,17 +194,18 @@ export default function AdminDashboard() {
     if (!editingProduct || isSubmitting || uploadingImage) return;
     setIsSubmitting(true);
     try {
-      await updateProduct(editingProduct.id, {
+      const updatedFields: Partial<Product> = {
         name: formData.name,
         category: formData.category,
         price: Number(formData.price),
         unit: formData.unit,
         netWeight: formData.netWeight,
-        grossWeight: formData.grossWeight || undefined,
-        image: formData.image,
+        grossWeight: formData.grossWeight || "",
+        image: formData.image || editingProduct.image,
         featured: formData.featured,
         inStock: formData.inStock,
-      });
+      };
+      await updateProduct(editingProduct.id, updatedFields);
       setEditingProduct(null);
     } catch (err) {
       console.error("Error updating product:", err);
@@ -391,6 +393,11 @@ export default function AdminDashboard() {
                           <img
                             src={p.image}
                             alt={p.name}
+                            onError={(e) => {
+                              const target = e.currentTarget;
+                              target.onerror = null;
+                              target.src = "https://images.unsplash.com/photo-1534482421-64566f976cfa?auto=format&fit=crop&w=800&q=80";
+                            }}
                             className="w-12 h-12 rounded-xl object-cover border border-gray-200 shrink-0"
                           />
                           <div>

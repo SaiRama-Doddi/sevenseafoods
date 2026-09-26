@@ -62,6 +62,11 @@ export default function FeaturedProducts() {
                     <img
                       src={product.image}
                       alt={product.name}
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        target.onerror = null;
+                        target.src = "https://images.unsplash.com/photo-1534482421-64566f976cfa?auto=format&fit=crop&w=800&q=80";
+                      }}
                       className="
                         h-36 sm:h-48 lg:h-52 w-full object-cover
                         transition-transform duration-700 ease-out
