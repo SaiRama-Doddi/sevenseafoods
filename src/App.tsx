@@ -34,6 +34,7 @@ export default function App() {
               <Route path="/about" element={<About />} />
 
               {/* Category Routes */}
+              <Route path="/category/sea-foods" element={<ProductsPage />} />
               <Route path="/category/fresh-fish" element={<ProductsPage />} />
               <Route path="/category/shellfish" element={<ProductsPage />} />
               <Route path="/category/dry-seafood" element={<ProductsPage />} />

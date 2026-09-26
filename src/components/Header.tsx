@@ -18,12 +18,12 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full max-w-full overflow-x-hidden bg-white">
+    <header className="sticky top-0 z-50 w-full bg-white">
 
       {/* 🔹 TOP MARQUEE BAR */}
       <div className="bg-[#063f54] text-[#fddd15] text-sm overflow-hidden w-full max-w-full">
         <div className="whitespace-nowrap animate-marquee flex gap-12 py-2 font-medium">
-          <span>🚚 Free Home Delivery Service Available on Fresh & Dry Seafoods</span>
+          <span>🚚 Vizag local 10km free home delivery service available on fish, prawns, crabs, ( with cleaning )</span>
           <span className="flex items-center gap-1">
             <Phone size={14} /> Contact: +91 81216 02002
           </span>

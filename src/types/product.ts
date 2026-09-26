@@ -1,6 +1,6 @@
 // src/types/products.ts
 
-export type Category = "Fresh Fish" | "Shellfish" | "Dry Seafood";
+export type Category = "Sea Foods" | "Dry Seafood";
 
 export interface Product {
   id: number;
@@ -20,7 +20,7 @@ export const products: Product[] = [
   {
     id: 1,
     name: "Lobster Large Size",
-    category: "Shellfish",
+    category: "Sea Foods",
     price: 1999,
     unit: "kg",
     netWeight: "800 grams",
@@ -31,7 +31,7 @@ export const products: Product[] = [
   {
     id: 2,
     name: "Lobster Medium Size",
-    category: "Shellfish",
+    category: "Sea Foods",
     price: 1000,
     unit: "kg",
     netWeight: "800 grams",
@@ -42,7 +42,7 @@ export const products: Product[] = [
   {
     id: 3,
     name: "White Prawns",
-    category: "Shellfish",
+    category: "Sea Foods",
     price: 600,
     unit: "kg",
     netWeight: "500 grams",
@@ -53,7 +53,7 @@ export const products: Product[] = [
   {
     id: 4,
     name: "Tiger Prawns Large Size",
-    category: "Shellfish",
+    category: "Sea Foods",
     price: 1400,
     unit: "kg",
     netWeight: "500 grams",
@@ -64,7 +64,7 @@ export const products: Product[] = [
   {
     id: 5,
     name: "Tiger Prawns Medium Size",
-    category: "Shellfish",
+    category: "Sea Foods",
     price: 1250,
     unit: "kg",
     netWeight: "500 grams",
@@ -74,7 +74,7 @@ export const products: Product[] = [
   {
     id: 6,
     name: "Brown Prawns",
-    category: "Shellfish",
+    category: "Sea Foods",
     price: 500,
     unit: "kg",
     netWeight: "500 grams",
@@ -84,7 +84,7 @@ export const products: Product[] = [
   {
     id: 7,
     name: "Blue Crabs (Large)",
-    category: "Shellfish",
+    category: "Sea Foods",
     price: 600,
     unit: "kg",
     netWeight: "500 grams",
@@ -94,7 +94,7 @@ export const products: Product[] = [
   {
     id: 8,
     name: "Live Crabs",
-    category: "Shellfish",
+    category: "Sea Foods",
     price: 600,
     unit: "kg",
     netWeight: "700 grams",
@@ -104,7 +104,7 @@ export const products: Product[] = [
   {
     id: 9,
     name: "3 Dot Crabs",
-    category: "Shellfish",
+    category: "Sea Foods",
     price: 300,
     unit: "kg",
     netWeight: "500 grams",
@@ -114,7 +114,7 @@ export const products: Product[] = [
   {
     id: 10,
     name: "Squid Fish",
-    category: "Shellfish",
+    category: "Sea Foods",
     price: 500,
     unit: "kg",
     netWeight: "500 grams",
@@ -124,7 +124,7 @@ export const products: Product[] = [
   {
     id: 11,
     name: "Octopus",
-    category: "Shellfish",
+    category: "Sea Foods",
     price: 600,
     unit: "kg",
     netWeight: "600–700 grams",
@@ -136,7 +136,7 @@ export const products: Product[] = [
   {
     id: 12,
     name: "King Fish Curry Cut",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 800,
     unit: "kg",
     netWeight: "800 grams",
@@ -147,7 +147,7 @@ export const products: Product[] = [
   {
     id: 13,
     name: "King Fish – Konam",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 900,
     unit: "kg",
     netWeight: "800 grams",
@@ -158,7 +158,7 @@ export const products: Product[] = [
   {
     id: 14,
     name: "King Fish Fillet (Konam)",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 1300,
     unit: "1.5 kg",
     netWeight: "600 grams",
@@ -168,7 +168,7 @@ export const products: Product[] = [
   {
     id: 15,
     name: "King Fish Heads - Konam",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 300,
     unit: "kg",
     netWeight: "600 grams",
@@ -178,7 +178,7 @@ export const products: Product[] = [
   {
     id: 16,
     name: "Chinese Pomfret (Large)",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 1600,
     unit: "kg",
     netWeight: "800 grams",
@@ -189,7 +189,7 @@ export const products: Product[] = [
   {
     id: 17,
     name: "Chinese Pomfret (Medium)",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 1400,
     unit: "kg",
     netWeight: "800 grams",
@@ -199,7 +199,7 @@ export const products: Product[] = [
   {
     id: 18,
     name: "White Pomfret (Large)",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 1450,
     unit: "kg",
     netWeight: "800 grams",
@@ -209,7 +209,7 @@ export const products: Product[] = [
   {
     id: 19,
     name: "White Pomfret (Medium)",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 1350,
     unit: "kg",
     netWeight: "800 grams",
@@ -219,7 +219,7 @@ export const products: Product[] = [
   {
     id: 20,
     name: "Black Pomfret",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 600,
     unit: "kg",
     netWeight: "800 grams",
@@ -229,7 +229,7 @@ export const products: Product[] = [
   {
     id: 21,
     name: "Tuna Fish Curry Cut",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 400,
     unit: "kg",
     netWeight: "600 grams",
@@ -239,7 +239,7 @@ export const products: Product[] = [
   {
     id: 22,
     name: "Anchovy Fish (Netthalu)",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 400,
     unit: "kg",
     netWeight: "600 grams",
@@ -249,7 +249,7 @@ export const products: Product[] = [
   {
     id: 23,
     name: "Mackerel Fish (Kanagadhala)",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 400,
     unit: "kg",
     netWeight: "700 grams",
@@ -259,7 +259,7 @@ export const products: Product[] = [
   {
     id: 24,
     name: "Pink Perch (Gulivendalu)",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 400,
     unit: "kg",
     netWeight: "800 grams",
@@ -269,7 +269,7 @@ export const products: Product[] = [
   {
     id: 25,
     name: "Roopchand (Rive Fish)",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 270,
     unit: "kg",
     netWeight: "600 grams",
@@ -279,7 +279,7 @@ export const products: Product[] = [
   {
     id: 26,
     name: "Sheelavathi (River Fish)",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 270,
     unit: "kg",
     netWeight: "600 grams",
@@ -289,7 +289,7 @@ export const products: Product[] = [
   {
     id: 27,
     name: "Milk Shark Fish",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 600,
     unit: "kg",
     netWeight: "500 grams",
@@ -299,7 +299,7 @@ export const products: Product[] = [
   {
     id: 28,
     name: "Lady Fingers Fish",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 600,
     unit: "kg",
     netWeight: "600 grams",
@@ -375,7 +375,7 @@ export const products: Product[] = [
    {
     id: 36,
     name: "Seer Fish-Vanajaram",
-    category: "Fresh Fish",
+    category: "Sea Foods",
     price: 800,
     unit: "kg",
     netWeight: "800 grams",
@@ -385,7 +385,7 @@ export const products: Product[] = [
   {
   id: 37,
   name: "Pandugoppa Fish",
-  category: "Fresh Fish",
+  category: "Sea Foods",
   price: 750,
   unit: "kg",
   netWeight: "600 grams (after cleaning)",
@@ -396,7 +396,7 @@ export const products: Product[] = [
 {
   id: 38,
   name: "Yellow Tuna Boneless Meat",
-  category: "Fresh Fish",
+  category: "Sea Foods",
   price: 550,
   unit: "600 g",
   netWeight: "600 grams (after cleaning)",
@@ -407,7 +407,7 @@ export const products: Product[] = [
 {
   id: 39,
   name: "Salmon Fish",
-  category: "Fresh Fish",
+  category: "Sea Foods",
   price: 800,
   unit: "kg",
   netWeight: "800 grams (after cleaning)",
@@ -418,7 +418,7 @@ export const products: Product[] = [
 {
   id: 40,
   name: "Red Snapper Fish",
-  category: "Fresh Fish",
+  category: "Sea Foods",
   price: 600,
   unit: "kg",
   netWeight: "600 grams (after cleaning)",

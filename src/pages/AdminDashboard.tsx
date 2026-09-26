@@ -38,7 +38,7 @@ export default function AdminDashboard() {
   // Form states
   const [formData, setFormData] = useState({
     name: "",
-    category: "Fresh Fish" as Category,
+    category: "Sea Foods" as Category,
     price: 0,
     unit: "kg",
     netWeight: "",
@@ -71,7 +71,7 @@ export default function AdminDashboard() {
   const handleOpenAddModal = () => {
     setFormData({
       name: "",
-      category: "Fresh Fish",
+      category: "Sea Foods",
       price: 500,
       unit: "kg",
       netWeight: "800 grams",
@@ -260,8 +260,7 @@ export default function AdminDashboard() {
                 className="pl-9 pr-8 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 focus:outline-none cursor-pointer"
               >
                 <option value="All">All Categories</option>
-                <option value="Fresh Fish">Fresh Fish</option>
-                <option value="Shellfish">Shellfish</option>
+                <option value="Sea Foods">Sea Foods</option>
                 <option value="Dry Seafood">Dry Seafood</option>
               </select>
             </div>
@@ -473,8 +472,7 @@ export default function AdminDashboard() {
                           onChange={(e) => setFormData({ ...formData, category: e.target.value as Category })}
                           className="w-full border border-gray-300 rounded-xl px-3 py-3 text-sm focus:outline-none focus:border-[#005F86] cursor-pointer"
                         >
-                          <option value="Fresh Fish">Fresh Fish</option>
-                          <option value="Shellfish">Shellfish</option>
+                          <option value="Sea Foods">Sea Foods</option>
                           <option value="Dry Seafood">Dry Seafood</option>
                         </select>
                       </div>

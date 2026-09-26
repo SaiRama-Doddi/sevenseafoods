@@ -23,7 +23,7 @@ export function Footer() {
             </p>
             <div className="flex items-start gap-2 text-xs font-semibold text-[#fddd15] bg-white/10 p-2.5 rounded-lg border border-yellow-300/20 max-w-xs">
               <Sparkles size={16} className="shrink-0 mt-0.5" />
-              <span>Vizag local 10km free home delivery service available</span>
+              <span>Vizag local 10km free home delivery service available on fish, prawns, crabs, ( with cleaning )</span>
             </div>
           </div>
 
@@ -35,7 +35,15 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-yellow-100/90">
               <li>
                 <a
-                  href="/products?category=Fish"
+                  href="/products?filter=Sea Foods"
+                  className="hover:text-[#fddd15] transition capitalize"
+                >
+                  Sea Foods
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/products?filter=Fish"
                   className="hover:text-[#fddd15] transition capitalize"
                 >
                   Fish
@@ -43,7 +51,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/products?category=Prawns"
+                  href="/products?filter=Prawns"
                   className="hover:text-[#fddd15] transition capitalize"
                 >
                   Prawns
@@ -51,23 +59,15 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/products?category=Crab"
+                  href="/products?filter=Crabs"
                   className="hover:text-[#fddd15] transition capitalize"
                 >
-                  Crab's
+                  Crabs
                 </a>
               </li>
               <li>
                 <a
-                  href="/products?category=Shellfish"
-                  className="hover:text-[#fddd15] transition capitalize"
-                >
-                  Shellfish
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/products?category=Dry Seafood"
+                  href="/products?filter=Dry Seafood"
                   className="hover:text-[#fddd15] transition capitalize"
                 >
                   Dry Seafood

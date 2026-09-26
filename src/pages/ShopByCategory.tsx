@@ -3,14 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 const categories = [
   {
-    name: "Fresh Fish",
-    description: "King fish, pomfret, tuna & more",
+    name: "Sea Foods",
+    description: "Fresh fish, prawns, lobster, crabs, squid & more",
     image: "https://static.vecteezy.com/system/resources/previews/026/204/197/large_2x/fresh-fish-and-seafood-assortment-ai-generated-image-photo.jpg",
-  },
-  {
-    name: "Shellfish",
-    description: "Prawns, lobster, crabs & squid",
-    image: "https://www.nutritionadvance.com/wp-content/uploads/2022/02/various-types-of-shellfish.jpg",
   },
   {
     name: "Dry Seafood",
@@ -32,19 +27,19 @@ export default function ShopByCategory() {
           Browse our curated selection of premium seafood.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {categories.map(cat => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {categories.map((cat) => (
             <div
               key={cat.name}
               onClick={() =>
-                navigate(`/products?category=${encodeURIComponent(cat.name)}`)
+                navigate(`/products?filter=${encodeURIComponent(cat.name)}`)
               }
               className="relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
             >
               <img
                 src={cat.image}
                 alt={cat.name}
-                className="h-64 w-full object-cover group-hover:scale-105 transition duration-300"
+                className="h-64 sm:h-72 w-full object-cover group-hover:scale-105 transition duration-300"
               />
 
               <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
