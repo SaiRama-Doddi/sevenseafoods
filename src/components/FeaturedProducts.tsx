@@ -42,8 +42,8 @@ export default function FeaturedProducts() {
           Our most popular selections, handpicked for quality and freshness.
         </motion.p>
 
-        {/* GRID: 2 CARDS PER ROW ON MOBILE */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
+        {/* GRID: 2 CARDS ON MOBILE, 4 CARDS ON DESKTOP & TABLET */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
           {featured.map((product, index) => {
             const isAdded = addedAnimationId === product.id;
 

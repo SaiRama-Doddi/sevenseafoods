@@ -205,6 +205,7 @@ export const products: Product[] = [
     netWeight: "800 grams",
     grossWeight: "1 kg count 2-3 pieces whole cleaned",
     image: "https://m.media-amazon.com/images/I/41xOpahw9XL.jpg",
+    featured: true,
   },
   {
     id: 19,

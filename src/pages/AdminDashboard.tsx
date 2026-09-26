@@ -49,6 +49,8 @@ export default function AdminDashboard() {
   });
 
   const [imageUploadType, setImageUploadType] = useState<"upload" | "url">("upload");
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Redirect to login if not authenticated
   if (!user && !loading) {
@@ -99,10 +101,54 @@ export default function AdminDashboard() {
     });
   };
 
-  // Handle Local File Upload
-  const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
+  // Helper to compress uploaded image files to lightweight Base64 (<100KB) so Firestore accepts them
+  const compressImage = (file: File, maxWidth = 800, quality = 0.75): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          let width = img.width;
+          let height = img.height;
+
+          if (width > maxWidth) {
+            height = Math.round((height * maxWidth) / width);
+            width = maxWidth;
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext("2d");
+          if (!ctx) {
+            resolve(event.target?.result as string);
+            return;
+          }
+
+          ctx.drawImage(img, 0, 0, width, height);
+          const dataUrl = canvas.toDataURL("image/jpeg", quality);
+          resolve(dataUrl);
+        };
+        img.onerror = (err) => reject(err);
+        img.src = event.target?.result as string;
+      };
+      reader.onerror = (err) => reject(err);
+      reader.readAsDataURL(file);
+    });
+  };
+
+  // Handle Local File Upload with Compression
+  const handleFileUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
+    if (!file) return;
+
+    setUploadingImage(true);
+    try {
+      const compressedDataUrl = await compressImage(file, 800, 0.75);
+      setFormData((prev) => ({ ...prev, image: compressedDataUrl }));
+    } catch (err) {
+      console.warn("Image compression warning, using default reader:", err);
       const reader = new FileReader();
       reader.onloadend = () => {
         if (typeof reader.result === "string") {
@@ -110,42 +156,61 @@ export default function AdminDashboard() {
         }
       };
       reader.readAsDataURL(file);
+    } finally {
+      setUploadingImage(false);
     }
   };
 
   // Submit Add Product
   const handleAddSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await addProduct({
-      name: formData.name,
-      category: formData.category,
-      price: Number(formData.price),
-      unit: formData.unit,
-      netWeight: formData.netWeight,
-      grossWeight: formData.grossWeight || undefined,
-      image: formData.image,
-      featured: formData.featured,
-      inStock: formData.inStock,
-    });
-    setIsAddModalOpen(false);
+    if (isSubmitting || uploadingImage) return;
+    setIsSubmitting(true);
+    try {
+      await addProduct({
+        name: formData.name,
+        category: formData.category,
+        price: Number(formData.price),
+        unit: formData.unit,
+        netWeight: formData.netWeight,
+        grossWeight: formData.grossWeight || undefined,
+        image: formData.image,
+        featured: formData.featured,
+        inStock: formData.inStock,
+      });
+      setIsAddModalOpen(false);
+    } catch (err) {
+      console.error("Error adding product:", err);
+      alert("Error adding product. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Submit Edit Product
   const handleEditSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!editingProduct) return;
-    await updateProduct(editingProduct.id, {
-      name: formData.name,
-      category: formData.category,
-      price: Number(formData.price),
-      unit: formData.unit,
-      netWeight: formData.netWeight,
-      grossWeight: formData.grossWeight || undefined,
-      image: formData.image,
-      featured: formData.featured,
-      inStock: formData.inStock,
-    });
-    setEditingProduct(null);
+    if (!editingProduct || isSubmitting || uploadingImage) return;
+    setIsSubmitting(true);
+    try {
+      await updateProduct(editingProduct.id, {
+        name: formData.name,
+        category: formData.category,
+        price: Number(formData.price),
+        unit: formData.unit,
+        netWeight: formData.netWeight,
+        grossWeight: formData.grossWeight || undefined,
+        image: formData.image,
+        featured: formData.featured,
+        inStock: formData.inStock,
+      });
+      setEditingProduct(null);
+    } catch (err) {
+      console.error("Error updating product:", err);
+      alert("Error updating product. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Confirm Delete
@@ -657,12 +722,23 @@ export default function AdminDashboard() {
                       </button>
 
                       <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        whileHover={{ scale: isSubmitting || uploadingImage ? 1 : 1.02 }}
+                        whileTap={{ scale: isSubmitting || uploadingImage ? 1 : 0.98 }}
                         type="submit"
-                        className="flex-1 bg-[#005F86] hover:bg-[#004a68] text-white py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transition cursor-pointer"
+                        disabled={isSubmitting || uploadingImage}
+                        className={`flex-1 text-white py-3 rounded-xl font-semibold text-sm shadow-lg transition cursor-pointer ${
+                          isSubmitting || uploadingImage
+                            ? "bg-gray-400 cursor-not-allowed"
+                            : "bg-[#005F86] hover:bg-[#004a68] hover:shadow-xl"
+                        }`}
                       >
-                        {editingProduct ? "Save Changes" : "Create Product"}
+                        {uploadingImage
+                          ? "Processing Image..."
+                          : isSubmitting
+                          ? "Saving..."
+                          : editingProduct
+                          ? "Save Changes"
+                          : "Create Product"}
                       </motion.button>
                     </div>
 

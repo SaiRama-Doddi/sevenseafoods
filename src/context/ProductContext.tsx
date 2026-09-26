@@ -33,11 +33,15 @@ export function ProductProvider({ children }: { children: ReactNode }) {
       if (snapshot.empty) {
         console.log("Firestore collection is empty.");
         setProductList(initialSeedProducts);
-      } else {
         const fetched = snapshot.docs.map((docSnap) => {
           const data = docSnap.data();
+          let category = data.category;
+          if (category === "Fresh Fish" || category === "Shellfish") {
+            category = "Sea Foods";
+          }
           return {
             ...data,
+            category,
             id: Number(data.id || docSnap.id),
           } as Product;
         });
@@ -87,7 +91,16 @@ export function ProductProvider({ children }: { children: ReactNode }) {
       const docRef = doc(db, "products", String(id));
       await updateDoc(docRef, updatedFields);
     } catch (err) {
-      console.warn("Firestore error updating product, falling back to local state:", err);
+      console.warn("Firestore updateDoc error, attempting setDoc fallback:", err);
+      try {
+        const docRef = doc(db, "products", String(id));
+        const existing = productList.find((p) => p.id === id);
+        if (existing) {
+          await setDoc(docRef, { ...existing, ...updatedFields });
+        }
+      } catch (innerErr) {
+        console.error("Firestore setDoc fallback failed:", innerErr);
+      }
     }
     setProductList((prev) =>
       prev.map((p) => (p.id === id ? { ...p, ...updatedFields } : p))
