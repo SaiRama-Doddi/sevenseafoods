@@ -17,7 +17,7 @@ export default function Contact() {
       return;
     }
 
-    const whatsappNumber = "918121602002";
+    const whatsappNumber = "918499919197";
     const text = `*New Quote Request / Inquiry - Seven Seafoods* 🐟
 --------------------------------
 👤 *Name:* ${name.trim()}
@@ -81,7 +81,7 @@ export default function Contact() {
 
               <div className="space-y-6 text-sm">
                 <InfoItem icon={<Phone />} label="Phone">
-                  +91 81216 02002
+                  +91 84999 19197
                 </InfoItem>
 
                 <InfoItem icon={<Mail />} label="Email">
